@@ -46,6 +46,33 @@ export const settings = {
                     textureName: 'bg_bonus_port'
                 }
             },
+            wheel:{
+                bgFrame:{
+                    textureName: 'krug'
+                },
+                drum:{
+                    anchorX: 0.5,
+                    anchorY: 0.5,
+                    textureName: 'drum',
+                    x: 285,
+                    y: 288
+                },
+                underFrame:{
+                    textureName: 'lamps',
+
+                    x: -13,
+                    y: 8
+                },
+                land:{
+                    x: 350,
+                    y: 50
+                },
+                port:{
+                    x: 70,
+                    y: 375
+                }
+            },
+
         },
         ui:{
             balance: {
@@ -227,6 +254,18 @@ export const settings = {
             {
                 "name": "wheel_of_fortune",
                 "srcs": "res/textures/small_games/placeholders/wheel_of_fortune.png"
+            },
+            {
+                "name": "krug",
+                "srcs": "res/textures/small_games/krug.png"
+            },
+            {
+                "name": "drum",
+                "srcs": "res/textures/small_games/inside.png"
+            },
+            {
+                "name": "lamps",
+                "srcs": "res/textures/small_games/lamps.png"
             },
 
         ],

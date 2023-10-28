@@ -19,13 +19,13 @@ export class Card extends SpineBase{
             const random = randomFromArr([0, 1, 2])
             const placeholder = this.descriptor.placeholders[random]
             const textureName = placeholder.textureName
-            this.replacePlaceholder(this, textureName)
+            this.replacePlaceholder(textureName)
 
             this.addToStage()
             this.setAnimation(0, 'click_win', false)
             this.isOpened = true
 
-            setTimeout(() =>  send(ON_BONUS_GAME_START, placeholder.id), 4000)
+            setTimeout(() =>  send(ON_BONUS_GAME_START, placeholder.id), 3000)
         })
 
 
@@ -41,9 +41,9 @@ export class Card extends SpineBase{
         this.eventMode = bool && !this.isOpened ? 'static' : 'none'
     }
 
-    replacePlaceholder(spine, textureName){
-        const slotIndex = spine.skeleton.findSlotIndex('put_bonus_here_win');
-        const slot = spine.skeleton.slots[slotIndex];
+    replacePlaceholder(textureName){
+        const slotIndex = this.skeleton.findSlotIndex('put_bonus_here_win');
+        const slot = this.skeleton.slots[slotIndex];
         const sprite = slot.currentSprite;
         if (!sprite) return;
         sprite.texture = createTexture(textureName)

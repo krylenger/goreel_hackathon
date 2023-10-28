@@ -78,6 +78,41 @@ export const settings = {
             },
 
         },
+        thimbles:{
+            bg:{
+                land:{
+                    textureName: 'bg_bonus_land'
+                },
+                port:{
+                    textureName: 'bg_bonus_port'
+                }
+            },
+            thimblesSpine: {
+                name: 'cap',
+                land:{
+                    x: 643,
+                    y: 530
+                },
+                port:{
+                    x: 362,
+                    y: 850
+                }
+            },
+            chooseText: {
+                text: 'Please, choose a thimble!',
+                style:{
+                    "fontFamily":'Franklin',
+                    "fontSize": "28px",
+                    "fontWeight": 'normal',
+                    "fill": ['#ffffff'],
+                },
+                anchorX: 0.5,
+                anchorY: 0.5,
+                x: 0,
+                y: 100
+            }
+
+        },
         ui:{
             balance: {
                 staticText:{
@@ -92,7 +127,7 @@ export const settings = {
                     y: 0
                 },
                 dynamicText:{
-                    text: '11144',
+                    text: '1000',
                     postfix: '$',
                     style:{
                         "fontFamily":'Franklin',
@@ -154,7 +189,7 @@ export const settings = {
                     scale: 0.7
                 },
                 land:{
-                    x: 950,
+                    x: 970,
                     y: 200,
                 },
                 port:{
@@ -195,7 +230,7 @@ export const settings = {
                     textureName: 'play_btn'
                 },
                 land:{
-                    x: 1090,
+                    x: 1120,
                     y: 500,
                 },
                 port:{

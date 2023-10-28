@@ -34,19 +34,21 @@ export class WheelOfFortune extends Container{
     }
 
     open(){
-
+        UI.setPlayBtnEnabled(false)
         UI.setPlayBtnAction(this.rotate.bind(this))
         UI.setVisiblePlayBtn(true)
         this.visible = true
         this.alpha = 0
-        gsap.to(this, {pixi: {alpha: 1}, duration: 1})
+        gsap.to(this, {pixi: {alpha: 1}, duration: 2, onComplete:() =>{
+                UI.setPlayBtnEnabled(true)
+            }})
 
     }
 
     close(){
         UI.setPlayBtnEnabled(false)
 
-        gsap.to(this, {pixi: {alpha: 0}, duration: 1, onComplete: () =>{
+        gsap.to(this, {pixi: {alpha: 0}, duration: 2, onComplete: () =>{
                 UI.setVisiblePlayBtn(false)
                 UI.setPlayBtnEnabled(true)
                 UI.setPlayBtnAction(null)
@@ -57,9 +59,10 @@ export class WheelOfFortune extends Container{
     }
 
     rotate(){
-        UI.setPlayBtnEnabled(false)
+        UI.setVisiblePlayBtn(false)
         const balance = UI.getBalance()
         const bet = UI.getBet()
+        UI.setWin(0)
         UI.setBalance(balance - bet)
 
         const pos = randomFromArr([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
@@ -94,7 +97,7 @@ export class WheelOfFortune extends Container{
         UI.setWin(xWin)
         const balance = UI.getBalance()
         UI.setBalance(balance + xWin)
-        UI.setPlayBtnEnabled(true)
+        UI.setVisiblePlayBtn(true)
     }
 
 }

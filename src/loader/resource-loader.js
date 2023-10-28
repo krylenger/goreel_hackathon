@@ -16,10 +16,18 @@ export const loadAssetsToCache = async descriptor => {
     Assets.addBundle('spines', spines);
     Assets.addBundle('fonts', fonts);
 
-    await Assets.loadBundle('textures', onProgress)
-    await Assets.loadBundle('fonts', onProgress)
+    const [spineRes] = await Promise.all([
+        Assets.loadBundle('spines', onProgress),
+        Assets.loadBundle('textures', onProgress),
+        Assets.loadBundle('fonts', onProgress)
 
-    spineResources = await Assets.loadBundle('spines', onProgress)
+    ])
+    spineResources = spineRes
+    return
+    // await Assets.loadBundle('textures', onProgress)
+    // await Assets.loadBundle('fonts', onProgress)
+
+    // spineResources = await Assets.loadBundle('spines', onProgress)onProgress
 
 
 }

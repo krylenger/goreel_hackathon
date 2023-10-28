@@ -73,14 +73,14 @@ class UI {
     }
 
     setBalance(balance){
-        this.balanceDynamicText.setText(balance)
+        this.balanceDynamicText.setText(balance.toFixed(2))
     }
     getBalance(){
         return +this.balanceDynamicText.getText()
     }
 
     setWin(win){
-        this.winDynamicText.setText(win)
+        this.winDynamicText.setText(win.toFixed(2))
     }
     getWin(){
         return this.winDynamicText.getText()

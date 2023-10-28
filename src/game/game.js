@@ -7,6 +7,7 @@ import {ON_BONUS_GAME_START} from "../constants/events";
 import {Container} from "pixi.js";
 import {WheelOfFortune} from "./SmallGames/WheelOfFortune/WheelOfFortune";
 import gsap from "gsap/all";
+import {Thimbles} from "./SmallGames/Thimbles/Thimbles";
 
 export class Game {
     constructor(stage, descriptor) {
@@ -24,16 +25,31 @@ export class Game {
         this.wheelOfFortune = new WheelOfFortune(this.stage, this.descriptor.wheelOfFortune)
         this.wheelOfFortune.visible = false
 
+        this.thimbles = new Thimbles(this.stage, this.descriptor.thimbles)
+        this.thimbles.visible = false
+
+
         UI.init(this.stage, this.descriptor['ui'])
         UI.setVisiblePlayBtn(false)
 
         subscribe(ON_BONUS_GAME_START, ({detail}) => {
-            this.setMainGameVisibility(false)
-            this.wheelOfFortune.open()
 
+            // switch (detail) {
+            //     case 0:
+            //         this.thimbles.open()
+            //         break
+            //     case 1:
+            //         this.thimbles.open()
+            //         break
+            //     case 2:
+                    this.wheelOfFortune.open()
+            //         break
+            //
+            // }
+
+            this.setMainGameVisibility(false)
 
         })
-
 
     }
 
@@ -57,9 +73,9 @@ export class Game {
 
             this.mainGameContainer.alpha = 0
             this.mainGameContainer.visible = true
-            gsap.to(this.mainGameContainer, {pixi: {alpha: 1}, duration: 1})
+            gsap.to(this.mainGameContainer, {pixi: {alpha: 1}, duration: 2})
         } else {
-            gsap.to(this.mainGameContainer, {pixi: {alpha: 0}, duration: 1, onComplete: () => {
+            gsap.to(this.mainGameContainer, {pixi: {alpha: 0}, duration: 2, onComplete: () => {
                     this.mainGameContainer.alpha = 1
                     this.mainGameContainer.visible = false
                 }})

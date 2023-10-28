@@ -12,7 +12,7 @@ module.exports = {
     },
     // devtool: 'source-map',
     mode: "development",
-   // mode watch: true,
+   // watch: true,
     // mode: "production",
     optimization: { minimize: true },
     resolve: {

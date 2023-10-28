@@ -1,20 +1,20 @@
 
-cap.png
-size: 512,256
+wheel.png
+size: 128,128
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-cap
-  rotate: true
+lamp
+  rotate: false
   xy: 2, 2
-  size: 196, 254
-  orig: 196, 254
+  size: 26, 26
+  orig: 26, 26
   offset: 0, 0
   index: -1
-coin
+light
   rotate: false
-  xy: 258, 88
-  size: 110, 110
-  orig: 110, 110
+  xy: 2, 30
+  size: 69, 69
+  orig: 69, 69
   offset: 0, 0
   index: -1

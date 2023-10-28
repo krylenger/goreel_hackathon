@@ -37,6 +37,16 @@ export const settings = {
                 },
             }
         },
+        wheelOfFortune:{
+            bg:{
+                land:{
+                    textureName: 'bg_bonus_land'
+                },
+                port:{
+                    textureName: 'bg_bonus_port'
+                }
+            },
+        },
         ui:{
             balance: {
                 staticText:{
@@ -173,6 +183,14 @@ export const settings = {
             {
                 "name": "bg_port",
                 "srcs": "res/textures/bg_port.png"
+            },
+            {
+                "name": "bg_bonus_land",
+                "srcs": "res/textures/bg_bonus_land.png"
+            },
+            {
+                "name": "bg_bonus_port",
+                "srcs": "res/textures/bg_bonus_port.png"
             },
             {
                 "name": "bet_text",

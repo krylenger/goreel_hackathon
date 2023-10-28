@@ -6,6 +6,7 @@ import {Card} from "./MainGameComponents/Card";
 import {send, subscribe} from "../sender/event-sender";
 import {ON_BONUS_GAME_START} from "../constants/events";
 import {Container} from "pixi.js";
+import {WheelOfFortune} from "./SmallGames/WheelOfFortune/WheelOfFortune";
 
 export class Game {
     constructor(stage, descriptor) {
@@ -22,15 +23,19 @@ export class Game {
        this.cardsContainer = this.createCards()
 
 
-        // this.bonusGamesContainer = new Container()
-        // this.stage.addChild(this.mainGameContainer)
+        this.wheelOfFortuneContainer = new Container()
+        this.wheelOfFortune = new WheelOfFortune(this.wheelOfFortuneContainer, this.descriptor.wheelOfFortune)
+
+
 
         UI.init(this.stage, this.descriptor['ui'])
         UI.setVisiblePlayBtn(false)
 
-
-
-        subscribe(ON_BONUS_GAME_START, ({detail}) => console.log(detail))
+        subscribe(ON_BONUS_GAME_START, ({detail}) => {
+            this.setMainGameVisibility(false)
+            this.stage.addChild(this.wheelOfFortuneContainer)
+            console.log(detail)
+        })
 
 
     }

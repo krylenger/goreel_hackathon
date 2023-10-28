@@ -10,128 +10,128 @@ export const settings = {
                 port:{
                     textureName: 'bg_port'
                 }
+            },
+            cards:{
+                name: 'card',
+                land: {
+                    x: 430,
+                    y: 150,
+                },
+                port:{
+                    x: 190,
+                    y: 410,
+                }
             }
         },
         ui:{
             balance: {
                 staticText:{
-                    text: 'BALANCE:',
+                    text: 'Balance:',
                     style:{
                         "fontFamily":'Franklin',
-                        "fontSize": "32px",
-
-                        "fill": ['#71a5ff'],
+                        "fontSize": "30px",
+                        "fill": ['#d0d0d0'],
                     },
                     anchorY: 0.5,
                     x: 0,
                     y: 0
                 },
                 dynamicText:{
-                    text: '44',
+                    text: '11144',
                     postfix: '$',
                     style:{
                         "fontFamily":'Franklin',
-                        "fontSize": "32px",
-                        "fontWeight": 'bold',
-                        "fill": ['#eae108'],
+                        "fontSize": "30px",
+                        "fill": ['#d0d0d0'],
                     },
                     anchorY: 0.5,
-                    x: 180,
+                    x: 120,
                     y: 0
                 },
                 land:{
-                    x: 140,
-                    y: 700,
+                    x: 45,
+                    y: 600,
                 },
                 port:{
-                    x: 20,
-                    y: 1250,
+                    x: 50,
+                    y: 1220,
                 }
             },
             bet: {
                 values: [0.5, 1, 2, 5, 10, 20, 50, 100],
                 defaultValuesIndex: 1,
                 staticText:{
-                    text: 'BET:',
-                    style:{
-                        "fontFamily":'Franklin',
-                        "fontSize": "32px",
-                        "fontWeight": 'bold',
-                        "fill": ['#71a5ff'],
-                    },
-                    anchorY: 0.5,
+                    textureName: 'bet_text',
                     x: 0,
                     y: 0
+                },
+                rectangle: {
+                    x: 140,
+                    y: -28,
+                    textureName: 'rectangle'
                 },
                 dynamicText:{
                     text: '44',
                     postfix: '$',
                     style:{
                         "fontFamily":'Franklin',
-                        "fontSize": "32px",
+                        "fontSize": "52px",
                         "fontWeight": 'bold',
-                        "fill": ['#eae108'],
+                        "fill": ['#e4ac19','#f3e047', '#e4ac19'],
                     },
+                    anchorX: 0.5,
                     anchorY: 0.5,
-                    x: 90,
-                    y: 0
+                    x: 216,
+                    y: 25
                 },
                 upClickArea:{
-                    scaleOver: 1.3,
-                    x: 100,
+                    scaleOver: 1.15,
+                    x: 216,
                     y: -40,
                     textureName: 'arrow_up',
-                    // scale: 0.1
+                    scale: 0.7
                 },
                 downClickArea:{
-                    scaleOver: 1.3,
-                    x: 20,
-                    y: -40,
+                    scaleOver: 1.15,
+                    x: 216,
+                    y: 95,
                     textureName: 'arrow_down',
-                    // scale: 0.1
+                    scale: 0.7
                 },
                 land:{
-                    x: 550,
-                    y: 700,
+                    x: 950,
+                    y: 200,
                 },
                 port:{
-                    x: 300,
-                    y: 1250,
+                    x: 50,
+                    y: 1080,
                 }
             },
             win: {
                 staticText:{
-                    text: 'WIN:',
-                    style:{
-                        "fontFamily":'Franklin',
-                        "fontSize": "32px",
-                        "fontWeight": 'bold',
-                        "fill": ['#71a5ff'],
-                    },
-                    anchorY: 0.5,
-                    x: 0,
-                    y: 0
+                   textureName: 'total_win_text',
                 },
                 dynamicText:{
                     text: '44',
                     postfix: '$',
                     style:{
                         "fontFamily":'Franklin',
-                        "fontSize": "32px",
+                        "fontSize": "100px",
                         "fontWeight": 'bold',
-                        "fill": ['#eae108'],
+                        "fill": ['#e4ac19','#f3e047', '#e4ac19'],
                     },
+                    anchorX: 0.5,
                     anchorY: 0.5,
-                    x: 90,
-                    y: 0
+                    x: 110,
+                    y: 90
                 },
                 land:{
-                    x: 880,
-                    y: 700,
+                    x: 50,
+                    y: 100,
                 },
                 port:{
-                    x: 500,
-                    y: 1250,
+                    x: 246,
+                    y: 100,
                 }
             },
         }
@@ -156,11 +156,19 @@ export const settings = {
             },
             {
                 "name": "bet_text",
-                "srcs": "res/textures/bet.png"
+                "srcs": "res/textures/bet_text.png"
+            },
+            {
+                "name": "total_win_text",
+                "srcs": "res/textures/total_win_text.png"
             },
             {
                 "name": "arrow_down",
                 "srcs": "res/textures/down.png"
+            },
+            {
+                "name": "rectangle",
+                "srcs": "res/textures/rectangle.png"
             },
             {
                 "name": "arrow_up",

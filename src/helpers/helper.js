@@ -10,3 +10,5 @@ export const isLand = () => innerWidth > innerHeight;
 export const isExist = value => value !== null && value !== undefined
 
 export const isFunction = func => func instanceof Function
+
+export const randomMinMax = (min, max) => Math.random() * (max - min) + min

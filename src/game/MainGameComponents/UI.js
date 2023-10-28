@@ -1,6 +1,7 @@
-import {TextBase} from "../components/base/text-base";
-import {ContainerBase} from "../components/base-oriented/container";
-import {ScalingButton} from "../components/ScalingButton";
+import {TextBase} from "../../components/base/text-base";
+import {ContainerBase} from "../../components/base-oriented/container";
+import {ScalingButton} from "../../components/ScalingButton";
+import {SpriteBase} from "../../components/base/sprite-base";
 
 class UI {
     init(stage, descriptor){
@@ -26,12 +27,14 @@ class UI {
 
     createWin(){
         const winTextContainer = new ContainerBase(this.stage, this.descriptor['win'])
-        this.winStaticText = new TextBase(winTextContainer, this.descriptor['win']['staticText'])
+        this.winStaticText = new SpriteBase(winTextContainer, this.descriptor['win']['staticText'])
         this.winDynamicText = new TextBase(winTextContainer, this.descriptor['win']['dynamicText'])
     }
     createBet(){
         const betTextContainer = new ContainerBase(this.stage, this.descriptor['bet'])
-        this.betStaticText = new TextBase(betTextContainer, this.descriptor['bet']['staticText'])
+
+        this.betRectangle = new SpriteBase(betTextContainer,  this.descriptor['bet']['rectangle'])
+        this.betStaticText = new SpriteBase(betTextContainer, this.descriptor['bet']['staticText'])
         this.betDynamicText = new TextBase(betTextContainer, this.descriptor['bet']['dynamicText'])
         this.upClickArea = new ScalingButton(betTextContainer, this.descriptor['bet']['upClickArea'], this.onUpClickArea.bind(this))
         this.downClickArea = new ScalingButton(betTextContainer, this.descriptor['bet']['downClickArea'], this.onDownClickArea.bind(this))

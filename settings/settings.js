@@ -20,6 +20,7 @@ export const settings = {
                         id: 0,
                     },
                     {
+
                         name: 'thimbles',
                         textureName:'',
                         id: 1,
@@ -169,14 +170,6 @@ export const settings = {
     },
     loader:{
         textures:[
-            {
-                "name": "head",
-                "srcs": "res/textures/money/head.png"
-            },
-            {
-                "name": "tail",
-                "srcs": "res/textures/money/tail.png"
-            },
             {
                 "name": "bg_land",
                 "srcs": "res/textures/bg_land.png"

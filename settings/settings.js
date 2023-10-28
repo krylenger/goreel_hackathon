@@ -2,13 +2,24 @@
 export const settings = {
     'backgroundColor': '#353535',
     game:{
+        main:{
+            bg:{
+                land:{
+                    textureName: 'bg_land'
+                },
+                port:{
+                    textureName: 'bg_port'
+                }
+            }
+        },
         ui:{
             balance: {
                 staticText:{
                     text: 'BALANCE:',
                     style:{
+                        "fontFamily":'Franklin',
                         "fontSize": "32px",
-                        "fontWeight": 'bold',
+
                         "fill": ['#71a5ff'],
                     },
                     anchorY: 0.5,
@@ -19,6 +30,7 @@ export const settings = {
                     text: '44',
                     postfix: '$',
                     style:{
+                        "fontFamily":'Franklin',
                         "fontSize": "32px",
                         "fontWeight": 'bold',
                         "fill": ['#eae108'],
@@ -42,6 +54,7 @@ export const settings = {
                 staticText:{
                     text: 'BET:',
                     style:{
+                        "fontFamily":'Franklin',
                         "fontSize": "32px",
                         "fontWeight": 'bold',
                         "fill": ['#71a5ff'],
@@ -54,6 +67,7 @@ export const settings = {
                     text: '44',
                     postfix: '$',
                     style:{
+                        "fontFamily":'Franklin',
                         "fontSize": "32px",
                         "fontWeight": 'bold',
                         "fill": ['#eae108'],
@@ -66,15 +80,15 @@ export const settings = {
                     scaleOver: 1.3,
                     x: 100,
                     y: -40,
-                    textureName: 'head',
-                    scale: 0.1
+                    textureName: 'arrow_up',
+                    // scale: 0.1
                 },
                 downClickArea:{
                     scaleOver: 1.3,
                     x: 20,
                     y: -40,
-                    textureName: 'tail',
-                    scale: 0.1
+                    textureName: 'arrow_down',
+                    // scale: 0.1
                 },
                 land:{
                     x: 550,
@@ -89,6 +103,7 @@ export const settings = {
                 staticText:{
                     text: 'WIN:',
                     style:{
+                        "fontFamily":'Franklin',
                         "fontSize": "32px",
                         "fontWeight": 'bold',
                         "fill": ['#71a5ff'],
@@ -101,6 +116,7 @@ export const settings = {
                     text: '44',
                     postfix: '$',
                     style:{
+                        "fontFamily":'Franklin',
                         "fontSize": "32px",
                         "fontWeight": 'bold',
                         "fill": ['#eae108'],
@@ -130,6 +146,26 @@ export const settings = {
                 "name": "tail",
                 "srcs": "res/textures/money/tail.png"
             },
+            {
+                "name": "bg_land",
+                "srcs": "res/textures/bg_land.png"
+            },
+            {
+                "name": "bg_port",
+                "srcs": "res/textures/bg_port.png"
+            },
+            {
+                "name": "bet_text",
+                "srcs": "res/textures/bet.png"
+            },
+            {
+                "name": "arrow_down",
+                "srcs": "res/textures/down.png"
+            },
+            {
+                "name": "arrow_up",
+                "srcs": "res/textures/up.png"
+            },
 
         ],
         spines: [
@@ -147,10 +183,10 @@ export const settings = {
             },
         ],
         fonts: [
-            // {
-            //     "name": "gas",
-            //     "srcs": "res/fonts/gas.woff",
-            // },
+            {
+                "name": "Franklin",
+                "srcs": "res/fonts/franklin.ttf",
+            },
 
         ],
     }

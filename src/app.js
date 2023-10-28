@@ -1,5 +1,6 @@
 import '../css/style.css';
 import '../css/rotation-preloader.css';
+// import '../css/fonts.css'
 import "./waiter/waiter";
 import { PixiPlugin } from 'gsap/PixiPlugin';
 import {Application} from "pixi.js";

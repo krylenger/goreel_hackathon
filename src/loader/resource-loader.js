@@ -17,8 +17,10 @@ export const loadAssetsToCache = async descriptor => {
     Assets.addBundle('fonts', fonts);
 
     await Assets.loadBundle('textures', onProgress)
-    spineResources = await Assets.loadBundle('spines', onProgress)
     await Assets.loadBundle('fonts', onProgress)
+
+    spineResources = await Assets.loadBundle('spines', onProgress)
+
 
 }
 
@@ -26,5 +28,4 @@ const onProgress = () => {
     currentlyLoaded++;
     sender.send(events.ON_LOAD_PROGRESS, {totalToLoad, currentlyLoaded});
 }
-
 

@@ -1,7 +1,7 @@
 import {SpineBase} from "../../components/base/spine-base";
 import {createTexture, randomFromArr} from "../../helpers/helper";
 import {send, subscribe} from "../../sender/event-sender";
-import {SET_CARDS_INTERACTIVE} from "../../constants/events";
+import {ON_BONUS_GAME_START, SET_CARDS_INTERACTIVE} from "../../constants/events";
 
 export class Card extends SpineBase{
     constructor(stage, descriptor) {
@@ -24,6 +24,8 @@ export class Card extends SpineBase{
             this.addToStage()
             this.setAnimation(0, 'click_win', false)
             this.isOpened = true
+
+            setTimeout(() =>  send(ON_BONUS_GAME_START, placeholder.id), 4000)
         })
 
 

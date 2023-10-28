@@ -3,6 +3,8 @@ import {SpriteBaseOriented} from "../components/base-oriented/sprite-base-orient
 import {SpineBase} from "../components/base/spine-base";
 import {ContainerBase} from "../components/base-oriented/container";
 import {Card} from "./MainGameComponents/Card";
+import {send, subscribe} from "../sender/event-sender";
+import {ON_BONUS_GAME_START} from "../constants/events";
 
 export class Game {
     constructor(stage, descriptor) {
@@ -17,6 +19,12 @@ export class Game {
 
         UI.init(this.stage, this.descriptor['ui'])
         UI.setVisiblePlayBtn(false)
+
+
+
+        subscribe(ON_BONUS_GAME_START, ({detail}) => console.log(detail))
+
+
     }
 
     createCards(){

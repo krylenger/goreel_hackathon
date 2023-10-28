@@ -22,6 +22,8 @@ export class TextBase extends Text{
         this.prefix =  descriptor['prefix'] ?? '';
         this.postfix =  descriptor['postfix'] ?? '';
 
+        this.textValue = 0
+
         this.setText(descriptor['text'] ?? '')
 
         this.addToStage()
@@ -53,12 +55,14 @@ export class TextBase extends Text{
 
     setText(text) {
 
+        this.textValue = text
+
         this.text = this.prefix + text + this.postfix;
     }
 
     getText() {
 
-        return this.text;
+        return this.textValue
 
     }
 

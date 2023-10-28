@@ -22,13 +22,14 @@ export class Game {
         this.cardsContainer = this.createCards()
 
         this.wheelOfFortune = new WheelOfFortune(this.stage, this.descriptor.wheelOfFortune)
-        // this.wheelOfFortune.visible = false
+        this.wheelOfFortune.visible = false
 
         UI.init(this.stage, this.descriptor['ui'])
         UI.setVisiblePlayBtn(false)
 
         subscribe(ON_BONUS_GAME_START, ({detail}) => {
             this.setMainGameVisibility(false)
+            this.wheelOfFortune.init()
             this.wheelOfFortune.visible = true
 
         })

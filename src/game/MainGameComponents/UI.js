@@ -23,6 +23,11 @@ class UI {
         this.init = null
     }
 
+    setPlayBtnEnabled(bool){
+        this.playBtn.eventMode = bool ? 'static' : 'none';
+        if(!bool) this.playBtn.onPointerLeave()
+    }
+
     setPlayBtnAction(fn){
         this.playBtn.setAction(fn)
     }
@@ -71,21 +76,21 @@ class UI {
         this.balanceDynamicText.setText(balance)
     }
     getBalance(){
-        this.balanceDynamicText.getText()
+        return +this.balanceDynamicText.getText()
     }
 
     setWin(win){
         this.winDynamicText.setText(win)
     }
     getWin(){
-        this.winDynamicText.getText()
+        return this.winDynamicText.getText()
     }
 
     updateBet(){
         this.betDynamicText.setText(this.betValues[this.betValueIndex])
     }
     getBet(){
-        this.betDynamicText.getText()
+       return +this.betDynamicText.getText()
     }
 
 }

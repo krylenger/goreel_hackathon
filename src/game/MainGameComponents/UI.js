@@ -16,7 +16,19 @@ class UI {
         this.createBet()
         this.updateBet()
 
+
+        const playBtnContainer = new ContainerBase(this.stage, this.descriptor['playBtn'])
+        this.playBtn = new ScalingButton(playBtnContainer, this.descriptor['playBtn']['btn'])
+
         this.init = null
+    }
+
+    setPlayBtnAction(fn){
+        this.playBtn.setAction(fn)
+    }
+
+    setVisiblePlayBtn(visible){
+        this.playBtn.setVisible(visible)
     }
 
     createBalance(){

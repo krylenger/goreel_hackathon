@@ -13,6 +13,23 @@ export const settings = {
             },
             cards:{
                 name: 'card',
+                placeholders:[
+                    {
+                        name: 'headsAndTails',
+                        textureName:'',
+                        id: 0,
+                    },
+                    {
+                        name: 'thimbles',
+                        textureName:'',
+                        id: 1,
+                    },
+                    {
+                        name: 'wheelOfFortune',
+                        textureName:'',
+                        id: 2,
+                    },
+                ],
                 land: {
                     x: 430,
                     y: 150,
@@ -20,7 +37,7 @@ export const settings = {
                 port:{
                     x: 190,
                     y: 410,
-                }
+                },
             }
         },
         ui:{
@@ -134,6 +151,20 @@ export const settings = {
                     y: 100,
                 }
             },
+            playBtn:{
+                btn:{
+                    scaleOver: 1.1,
+                    textureName: 'play_btn'
+                },
+                land:{
+                    x: 1090,
+                    y: 500,
+                },
+                port:{
+                    x: 524,
+                    y: 1105,
+                }
+            }
         }
     },
     loader:{
@@ -173,6 +204,10 @@ export const settings = {
             {
                 "name": "arrow_up",
                 "srcs": "res/textures/up.png"
+            },
+            {
+                "name": "play_btn",
+                "srcs": "res/textures/play_btn.png"
             },
 
         ],

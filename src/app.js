@@ -29,7 +29,7 @@ const preloader = new Preloader(gameContainer)
 const onAssetsReady = () => {
 
     app.stage.alpha = 0
-    gsap.to(app.stage, {alpha: 1, duration: 0.3, delay: 0.3,
+    gsap.to(app.stage, {alpha: 1, duration: 1, delay: 0.3,
         onStart:() => {
             preloader.hide()
             gameContainer.appendChild(app.view)

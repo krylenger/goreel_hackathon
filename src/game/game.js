@@ -19,22 +19,18 @@ export class Game {
 
         this.bg = new SpriteBaseOriented(this.mainGameContainer, descriptor['main']['bg'])
         this.bg.addToStage()
+        this.cardsContainer = this.createCards()
 
-       this.cardsContainer = this.createCards()
-
-
-        this.wheelOfFortuneContainer = new Container()
-        this.wheelOfFortune = new WheelOfFortune(this.wheelOfFortuneContainer, this.descriptor.wheelOfFortune)
-
-
+        this.wheelOfFortune = new WheelOfFortune(this.stage, this.descriptor.wheelOfFortune)
+        this.wheelOfFortune.visible = false
 
         UI.init(this.stage, this.descriptor['ui'])
         UI.setVisiblePlayBtn(false)
 
         subscribe(ON_BONUS_GAME_START, ({detail}) => {
             this.setMainGameVisibility(false)
-            this.stage.addChild(this.wheelOfFortuneContainer)
-            console.log(detail)
+            this.wheelOfFortune.visible = true
+
         })
 
 

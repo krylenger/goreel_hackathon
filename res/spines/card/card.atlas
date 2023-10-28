@@ -1,0 +1,97 @@
+
+card.png
+size: 2048,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+back
+  rotate: false
+  xy: 666, 103
+  size: 152, 151
+  orig: 152, 151
+  offset: 0, 0
+  index: -1
+back_shadow
+  rotate: false
+  xy: 820, 103
+  size: 152, 151
+  orig: 152, 151
+  offset: 0, 0
+  index: -1
+dot
+  rotate: false
+  xy: 2, 2
+  size: 42, 43
+  orig: 42, 43
+  offset: 0, 0
+  index: -1
+face
+  rotate: false
+  xy: 204, 102
+  size: 152, 152
+  orig: 152, 152
+  offset: 0, 0
+  index: -1
+face_disable
+  rotate: false
+  xy: 358, 102
+  size: 152, 152
+  orig: 152, 152
+  offset: 0, 0
+  index: -1
+fase_shadow
+  rotate: false
+  xy: 512, 102
+  size: 152, 152
+  orig: 152, 152
+  offset: 0, 0
+  index: -1
+frame
+  rotate: true
+  xy: 2, 47
+  size: 23, 149
+  orig: 23, 149
+  offset: 0, 0
+  index: -1
+placeholder
+  rotate: false
+  xy: 204, 80
+  size: 112, 20
+  orig: 112, 20
+  offset: 0, 0
+  index: -1
+shine
+  rotate: false
+  xy: 2, 72
+  size: 200, 182
+  orig: 200, 182
+  offset: 0, 0
+  index: -1
+spark
+  rotate: false
+  xy: 1282, 206
+  size: 47, 48
+  orig: 47, 48
+  offset: 0, 0
+  index: -1
+star
+  rotate: false
+  xy: 153, 55
+  size: 15, 15
+  orig: 15, 15
+  offset: 0, 0
+  index: -1
+win
+  rotate: false
+  xy: 974, 103
+  size: 152, 151
+  orig: 152, 151
+  offset: 0, 0
+  index: -1
+win_shadow
+  rotate: false
+  xy: 1128, 103
+  size: 152, 151
+  orig: 152, 151
+  offset: 0, 0
+  index: -1

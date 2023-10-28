@@ -1,0 +1,20 @@
+
+cap.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+cap
+  rotate: true
+  xy: 2, 2
+  size: 211, 279
+  orig: 211, 279
+  offset: 0, 0
+  index: -1
+coin
+  rotate: false
+  xy: 283, 90
+  size: 123, 123
+  orig: 123, 123
+  offset: 0, 0
+  index: -1

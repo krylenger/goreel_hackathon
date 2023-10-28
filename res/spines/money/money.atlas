@@ -1,0 +1,20 @@
+
+money.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+money
+  rotate: false
+  xy: 2, 2
+  size: 210, 210
+  orig: 210, 210
+  offset: 0, 0
+  index: -1
+money2
+  rotate: false
+  xy: 214, 2
+  size: 210, 210
+  orig: 210, 210
+  offset: 0, 0
+  index: -1

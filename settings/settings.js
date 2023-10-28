@@ -206,7 +206,7 @@ export const settings = {
                     postfix: '$',
                     style:{
                         "fontFamily":'Franklin',
-                        "fontSize": "100px",
+                        "fontSize": "80px",
                         "fontWeight": 'bold',
                         "fill": ['#e4ac19','#f3e047', '#e4ac19'],
                     },

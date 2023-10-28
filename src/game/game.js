@@ -2,7 +2,7 @@ import UI from "./MainGameComponents/UI";
 import {SpriteBaseOriented} from "../components/base-oriented/sprite-base-oriented";
 import {ContainerBase} from "../components/base-oriented/container";
 import {Card} from "./MainGameComponents/Card";
-import {send, subscribe} from "../sender/event-sender";
+import {subscribe} from "../sender/event-sender";
 import {ON_BONUS_GAME_START} from "../constants/events";
 import {Container} from "pixi.js";
 import {WheelOfFortune} from "./SmallGames/WheelOfFortune/WheelOfFortune";
@@ -34,18 +34,19 @@ export class Game {
 
         subscribe(ON_BONUS_GAME_START, ({detail}) => {
 
-            // switch (detail) {
-            //     case 0:
-            //         this.thimbles.open()
-            //         break
-            //     case 1:
-            //         this.thimbles.open()
-            //         break
-            //     case 2:
+            switch (detail) {
+                case 0:
+                    // this.thimbles.open()
+
+                    break
+                case 1:
+                    this.thimbles.open()
+                    break
+                case 2:
                     this.wheelOfFortune.open()
-            //         break
-            //
-            // }
+                    break
+
+            }
 
             this.setMainGameVisibility(false)
 
@@ -79,10 +80,7 @@ export class Game {
                     this.mainGameContainer.alpha = 1
                     this.mainGameContainer.visible = false
                 }})
-
         }
 
-
     }
-
 }

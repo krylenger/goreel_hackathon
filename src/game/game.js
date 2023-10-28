@@ -1,12 +1,12 @@
 import UI from "./MainGameComponents/UI";
 import {SpriteBaseOriented} from "../components/base-oriented/sprite-base-oriented";
-import {SpineBase} from "../components/base/spine-base";
 import {ContainerBase} from "../components/base-oriented/container";
 import {Card} from "./MainGameComponents/Card";
 import {send, subscribe} from "../sender/event-sender";
 import {ON_BONUS_GAME_START} from "../constants/events";
 import {Container} from "pixi.js";
 import {WheelOfFortune} from "./SmallGames/WheelOfFortune/WheelOfFortune";
+import gsap from "gsap/all";
 
 export class Game {
     constructor(stage, descriptor) {
@@ -29,8 +29,8 @@ export class Game {
 
         subscribe(ON_BONUS_GAME_START, ({detail}) => {
             this.setMainGameVisibility(false)
-            this.wheelOfFortune.init()
-            this.wheelOfFortune.visible = true
+            this.wheelOfFortune.open()
+
 
         })
 
@@ -52,7 +52,21 @@ export class Game {
     }
 
     setMainGameVisibility(bool){
-        this.mainGameContainer.visible = bool
+
+        if(bool){
+
+            this.mainGameContainer.alpha = 0
+            this.mainGameContainer.visible = true
+            gsap.to(this.mainGameContainer, {pixi: {alpha: 1}, duration: 1})
+        } else {
+            gsap.to(this.mainGameContainer, {pixi: {alpha: 0}, duration: 1, onComplete: () => {
+                    this.mainGameContainer.alpha = 1
+                    this.mainGameContainer.visible = false
+                }})
+
+        }
+
+
     }
 
 }

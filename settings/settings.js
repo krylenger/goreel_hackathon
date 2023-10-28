@@ -114,7 +114,7 @@ export const settings = {
             },
             bet: {
                 values: [0.5, 1, 2, 5, 10, 20, 50, 100],
-                defaultValuesIndex: 1,
+                defaultValuesIndex: 2,
                 staticText:{
                     textureName: 'bet_text',
                     x: 0,

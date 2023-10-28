@@ -33,9 +33,27 @@ export class WheelOfFortune extends Container{
 
     }
 
-    init(){
-        UI.setVisiblePlayBtn(true)
+    open(){
+
         UI.setPlayBtnAction(this.rotate.bind(this))
+        UI.setVisiblePlayBtn(true)
+        this.visible = true
+        this.alpha = 0
+        gsap.to(this, {pixi: {alpha: 1}, duration: 1})
+
+    }
+
+    close(){
+        UI.setPlayBtnEnabled(false)
+
+        gsap.to(this, {pixi: {alpha: 0}, duration: 1, onComplete: () =>{
+                UI.setVisiblePlayBtn(false)
+                UI.setPlayBtnEnabled(true)
+                UI.setPlayBtnAction(null)
+                this.alpha = 1
+                this.visible = false
+            }})
+
     }
 
     rotate(){
@@ -46,9 +64,9 @@ export class WheelOfFortune extends Container{
 
         const pos = randomFromArr([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
 
-        const repeat = randomFromArr([0,0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3])
+        const repeat = randomFromArr([0,0, 0, 1, 1, 1, 1, 1, 2, 2, 3, 3])
 
-        const xTime = randomMinMax(5, repeat === 3 ? 7 : 15)/10
+        const xTime = randomMinMax(5, repeat === 3 ? 7 : 14)/10
 
         gsap.to(this.drum, {
             pixi: {angle: this.drum.angle + 30}, duration: 0.75 * xTime, ease: 'Back.easeIn(3)',

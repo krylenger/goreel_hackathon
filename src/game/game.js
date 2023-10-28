@@ -41,4 +41,8 @@ export class Game {
         return cardsContainer
     }
 
+    setCardsVisibility(bool){
+        this.cardsContainer.visible = bool
+    }
+
 }

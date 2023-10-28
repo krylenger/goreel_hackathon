@@ -5,17 +5,25 @@ import {ContainerBase} from "../components/base-oriented/container";
 import {Card} from "./MainGameComponents/Card";
 import {send, subscribe} from "../sender/event-sender";
 import {ON_BONUS_GAME_START} from "../constants/events";
+import {Container} from "pixi.js";
 
 export class Game {
     constructor(stage, descriptor) {
         this.stage = stage
         this.descriptor = descriptor
 
-        this.bg = new SpriteBaseOriented(this.stage, descriptor['main']['bg'])
+
+        this.mainGameContainer = new Container()
+        this.stage.addChild(this.mainGameContainer)
+
+        this.bg = new SpriteBaseOriented(this.mainGameContainer, descriptor['main']['bg'])
         this.bg.addToStage()
 
        this.cardsContainer = this.createCards()
 
+
+        // this.bonusGamesContainer = new Container()
+        // this.stage.addChild(this.mainGameContainer)
 
         UI.init(this.stage, this.descriptor['ui'])
         UI.setVisiblePlayBtn(false)
@@ -28,7 +36,7 @@ export class Game {
     }
 
     createCards(){
-        const cardsContainer = new ContainerBase(this.stage, this.descriptor['main'].cards)
+        const cardsContainer = new ContainerBase(this.mainGameContainer, this.descriptor['main'].cards)
 
         for(let i = 0; i < 3; i++){
 
@@ -41,8 +49,8 @@ export class Game {
         return cardsContainer
     }
 
-    setCardsVisibility(bool){
-        this.cardsContainer.visible = bool
+    setMainGameVisibility(bool){
+        this.mainGameContainer.visible = bool
     }
 
 }

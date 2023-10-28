@@ -14,3 +14,6 @@ export const isFunction = func => func instanceof Function
 export const randomMinMax = (min, max) => Math.random() * (max - min) + min
 
 export const randomFromArr = arr => Math.floor(Math.random() * arr.length)
+
+
+

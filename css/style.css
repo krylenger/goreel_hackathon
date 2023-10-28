@@ -1,6 +1,6 @@
 
 :root{
-    --main-bg-color: rgba(255, 255, 255, 0);
+    --main-bg-color: rgb(44, 0, 1);
 }
 
 *{
@@ -23,7 +23,7 @@ body{
 
 #game{
     position: relative;
-    background-color: var(--main-bg-color);
+    /*background-color: var(--main-bg-color);*/
     display: flex;
     justify-content: center;
     align-items: center;

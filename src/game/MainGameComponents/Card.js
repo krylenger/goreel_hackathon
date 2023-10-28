@@ -1,5 +1,5 @@
 import {SpineBase} from "../../components/base/spine-base";
-import {randomFromArr} from "../../helpers/helper";
+import {createTexture, randomFromArr} from "../../helpers/helper";
 import {send, subscribe} from "../../sender/event-sender";
 import {SET_CARDS_INTERACTIVE} from "../../constants/events";
 
@@ -11,18 +11,19 @@ export class Card extends SpineBase{
         this.eventMode = 'static'
         this.cursor = 'pointer';
 
+        this.isOpened = false
+
         this.on('pointerup', () => {
+
             send(SET_CARDS_INTERACTIVE, false)
             const random = randomFromArr([0, 1, 2])
             const placeholder = this.descriptor.placeholders[random]
-
-            console.log(placeholder)
-
-
+            const textureName = placeholder.textureName
+            this.replacePlaceholder(this, textureName)
 
             this.addToStage()
             this.setAnimation(0, 'click_win', false)
-
+            this.isOpened = true
         })
 
 
@@ -35,7 +36,15 @@ export class Card extends SpineBase{
     }
 
     setInteractive(bool){
-        this.eventMode = bool ? 'static' : 'none'
+        this.eventMode = bool && !this.isOpened ? 'static' : 'none'
+    }
+
+    replacePlaceholder(spine, textureName){
+        const slotIndex = spine.skeleton.findSlotIndex('put_bonus_here_win');
+        const slot = spine.skeleton.slots[slotIndex];
+        const sprite = slot.currentSprite;
+        if (!sprite) return;
+        sprite.texture = createTexture(textureName)
     }
 
 }

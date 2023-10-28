@@ -15,19 +15,15 @@ export const settings = {
                 name: 'card',
                 placeholders:[
                     {
-                        name: 'headsAndTails',
-                        textureName:'',
+                        textureName:'heads_and_tails',
                         id: 0,
                     },
                     {
-
-                        name: 'thimbles',
-                        textureName:'',
+                        textureName:'thimbles',
                         id: 1,
                     },
                     {
-                        name: 'wheelOfFortune',
-                        textureName:'',
+                        textureName:'wheel_of_fortune',
                         id: 2,
                     },
                 ],
@@ -130,7 +126,7 @@ export const settings = {
                    textureName: 'total_win_text',
                 },
                 dynamicText:{
-                    text: '44',
+                    text: '0',
                     postfix: '$',
                     style:{
                         "fontFamily":'Franklin',
@@ -201,6 +197,18 @@ export const settings = {
             {
                 "name": "play_btn",
                 "srcs": "res/textures/play_btn.png"
+            },
+            {
+                "name": "heads_and_tails",
+                "srcs": "res/textures/small_games/placeholders/heads_and_tails.png"
+            },
+            {
+                "name": "thimbles",
+                "srcs": "res/textures/small_games/placeholders/thimbles.png"
+            },
+            {
+                "name": "wheel_of_fortune",
+                "srcs": "res/textures/small_games/placeholders/wheel_of_fortune.png"
             },
 
         ],

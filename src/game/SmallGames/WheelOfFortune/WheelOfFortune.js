@@ -3,6 +3,7 @@ import {SpriteBaseOriented} from "../../../components/base-oriented/sprite-base-
 import {SpriteBase} from "../../../components/base/sprite-base";
 import {ContainerBase} from "../../../components/base-oriented/container";
 import gsap from 'gsap/all'
+import {SpineBase} from "../../../components/base/spine-base";
 
 export class WheelOfFortune extends Container{
     constructor(stage, descriptor) {
@@ -19,9 +20,14 @@ export class WheelOfFortune extends Container{
 
         this.drum = new SpriteBase(this.wheelContainer, this.descriptor['wheel'].drum)
 
-        gsap.to(this.drum, {pixi: {angle: 360}, duration: 1, repeat: -1, ease: 'Power0.easeInOut'})
+
+
+        // gsap.to(this.drum, {pixi: {angle: 360}, duration: 1, repeat: -1, ease: 'Power0.easeInOut'})
 
         this.underFrame = new SpriteBase(this.wheelContainer, this.descriptor['wheel'].underFrame)
+
+        this.light = new SpineBase(this.wheelContainer, this.descriptor['wheel'].light)
+        this.light.setAnimation(0, 'light', true)
 
         this.stage.addChild(this)
     }

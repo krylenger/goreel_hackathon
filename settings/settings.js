@@ -59,9 +59,13 @@ export const settings = {
                 },
                 underFrame:{
                     textureName: 'lamps',
-
                     x: -13,
                     y: 8
+                },
+                light:{
+                  name: 'light',
+                    x: 288,
+                    y: 287
                 },
                 land:{
                     x: 350,
@@ -281,6 +285,10 @@ export const settings = {
             {
                 "name": "money",
                 "srcs": "res/spines/money/money.json"
+            },
+            {
+                "name": "light",
+                "srcs": "res/spines/wheel/wheel.json"
             },
         ],
         fonts: [

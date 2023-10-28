@@ -1,8 +1,6 @@
-import {SmallGameBase} from "../SmallGameBase";
 
-export class HeadAndTail extends SmallGameBase{
+export class HeadAndTail{
     constructor(stage, descriptor) {
-        super(stage, descriptor);
     }
 
 }

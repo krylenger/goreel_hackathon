@@ -1,7 +1,5 @@
-import {SmallGameBase} from "../SmallGameBase";
 
-export class WheelOgFortune extends SmallGameBase{
+export class WheelOgFortune{
     constructor(stage, descriptor) {
-        super(stage, descriptor);
     }
 }

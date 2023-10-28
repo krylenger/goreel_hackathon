@@ -1,7 +1,7 @@
-import {SmallGameBase} from "../SmallGameBase";
 
-export class Thimbles extends SmallGameBase{
+
+export class Thimbles {
     constructor(stage, descriptor) {
-        super(stage, descriptor);
+
     }
 }

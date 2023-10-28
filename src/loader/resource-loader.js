@@ -23,12 +23,6 @@ export const loadAssetsToCache = async descriptor => {
 
     ])
     spineResources = spineRes
-    return
-    // await Assets.loadBundle('textures', onProgress)
-    // await Assets.loadBundle('fonts', onProgress)
-
-    // spineResources = await Assets.loadBundle('spines', onProgress)onProgress
-
 
 }
 

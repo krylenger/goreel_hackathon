@@ -8,6 +8,7 @@ import {Container} from "pixi.js";
 import {WheelOfFortune} from "./SmallGames/WheelOfFortune/WheelOfFortune";
 import gsap from "gsap/all";
 import {Thimbles} from "./SmallGames/Thimbles/Thimbles";
+import {playSound} from "../sound/sound-engine";
 
 export class Game {
     constructor(stage, descriptor) {
@@ -31,6 +32,9 @@ export class Game {
 
         UI.init(this.stage, this.descriptor['ui'])
         UI.setVisiblePlayBtn(false)
+
+
+        // document.addEventListener('dblclick', ()=> playSound('click_cancel'))
 
         subscribe(ON_BONUS_GAME_START, ({detail}) => {
 
@@ -83,4 +87,6 @@ export class Game {
         }
 
     }
+
+
 }

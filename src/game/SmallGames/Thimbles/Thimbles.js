@@ -9,6 +9,7 @@ import {TextBase} from "../../../components/base/text-base";
 import {ScalingButton} from '../../../components/ScalingButton';
 import {send} from "../../../sender/event-sender";
 import {ON_BONUS_GAME_CLOSE} from "../../../constants/events";
+import {playSound} from "../../../sound-engine/sound-engine";
 
 
 export class Thimbles extends Container {
@@ -24,8 +25,6 @@ export class Thimbles extends Container {
 
         this.container = new ContainerBase(this, this.descriptor['thimblesSpine'])
         this.thimbles = new SpineBase(this.container, this.descriptor['thimblesSpine'])
-
-
 
         this.chooseText = new TextBase(this.container, this.descriptor['chooseText'])
         this.chooseText.visible = false
@@ -61,8 +60,14 @@ export class Thimbles extends Container {
         UI.setBalance(balance - this.currentBet)
         UI.setVisiblePlayBtn(false)
         this.exitButton.setVisible(false);
+
+
+        playSound('stop_fx')
         this.thimbles.setAnimation(0, this.anims[this.ballIndex],false)
         this.thimbles.addAnimation(0, 'mixing',false, 2)
+        gsap.delayedCall(2, ()=> playSound('sack_mix'))
+
+
         gsap.delayedCall(5, () => {
             this.chooseText.visible = true
             this.capsSprites.forEach(sprite => sprite.eventMode = 'static')
@@ -71,7 +76,7 @@ export class Thimbles extends Container {
     }
 
     onCapPointerUp(name){
-
+        playSound('stop_fx')
         this.capsSprites.forEach(sprite => sprite.eventMode = 'none')
         this.chooseText.visible = false
         gsap.delayedCall(0.2, () => {

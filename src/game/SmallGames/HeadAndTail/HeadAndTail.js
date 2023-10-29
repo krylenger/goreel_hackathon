@@ -10,6 +10,7 @@ import {ScalingButton} from '../../../components/ScalingButton';
 import {randomFromArr} from '../../../helpers/helper';
 import {ON_BONUS_GAME_CLOSE} from "../../../constants/events";
 import {send} from "../../../sender/event-sender";
+import {playSound, stopSound} from "../../../sound-engine/sound-engine";
 
 
 export class HeadAndTail extends Container{
@@ -77,7 +78,9 @@ export class HeadAndTail extends Container{
 
     flipCoin(side) {
         if (!side) return;
-
+        playSound('click')
+        playSound('sack_mix')
+        gsap.delayedCall(2.3, ()=> stopSound('sack_mix'))
         const flipResult = randomFromArr([0, 1]);
         const win = this.calculateWin(side, flipResult);
 
@@ -125,6 +128,9 @@ export class HeadAndTail extends Container{
         gsap.to(this, {pixi: {alpha: 0}, duration: 2, onComplete: () =>{
                 this.alpha = 1
                 this.visible = false
+                this.coinSpine.setVisible(false);
+                this.chosenDiamond.setVisible(false);
+                this.chosenCrown.setVisible(false);
             }})
         send(ON_BONUS_GAME_CLOSE)
 

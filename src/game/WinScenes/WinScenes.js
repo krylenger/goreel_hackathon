@@ -15,7 +15,7 @@ export class WinScenes extends ContainerBase{
             if(win >= 100 || bigWin) {
                 this.bigWin.setAnimation(0, 'big_win', false)
             } else if(win > 0){
-                this.regularWin.setAnimation(0, 'animation', false)
+                this.regularWin.setAnimation(0, 'win', false)
             }
         })
 

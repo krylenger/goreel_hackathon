@@ -14,7 +14,6 @@ export class SoundButton extends ScalingButton{
 
         this.soundState = false
 
-        document.addEventListener('dblclick', ()=> playSound('background_main'))
         this.isSoundRun = false
 
     }
@@ -24,7 +23,7 @@ export class SoundButton extends ScalingButton{
         send(ON_SET_SOUNDS_ON_OFF, this.soundState);
 
         if(this.soundState && !this.isSoundRun){
-            playSound('background_main')
+            playSound('main')
             this.isSoundRun = true
         }
 

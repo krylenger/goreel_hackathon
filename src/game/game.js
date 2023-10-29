@@ -10,6 +10,7 @@ import {HeadAndTail} from './SmallGames/HeadAndTail/HeadAndTail';
 import gsap from "gsap/all";
 import {Thimbles} from "./SmallGames/Thimbles/Thimbles";
 import {WinScenes} from "./WinScenes/WinScenes";
+import {playSound} from "../sound-engine/sound-engine";
 
 export class Game {
     constructor(stage, descriptor) {
@@ -46,6 +47,7 @@ export class Game {
     }
 
     onBonusGameStart(detail){
+        playSound('bonus_win')
         switch (detail) {
             case 0:
                 this.headAndTail.open()
@@ -91,6 +93,8 @@ export class Game {
     }
 
     restartGame() {
+        playSound('click')
+        playSound('collect')
         this.setMainGameVisibility(true);
         UI.setVisiblePlayBtn(false)
         UI.setPlayBtnAction(null)

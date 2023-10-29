@@ -1,27 +1,27 @@
 
 win.png
-size: 512,128
+size: 512,256
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-coin
-  rotate: true
-  xy: 204, 2
-  size: 100, 110
-  orig: 100, 110
-  offset: 0, 0
-  index: -1
 dot
   rotate: false
-  xy: 316, 43
+  xy: 2, 2
   size: 59, 59
   orig: 59, 59
   offset: 0, 0
   index: -1
+shine
+  rotate: false
+  xy: 274, 2
+  size: 200, 182
+  orig: 200, 182
+  offset: 0, 0
+  index: -1
 win
   rotate: false
-  xy: 2, 35
-  size: 200, 67
-  orig: 200, 67
+  xy: 2, 63
+  size: 270, 121
+  orig: 270, 121
   offset: 0, 0
   index: -1

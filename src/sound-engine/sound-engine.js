@@ -31,11 +31,6 @@ const playSound = soundName =>  {
     soundIds[soundName] = sound.play(soundName)
 };
 
-
-const isPlaying = () => sound.playing();
-
-
-
 const stopSound = soundName => {
     if(!isInited) return
     if(isExist(soundName) && isExist(sound) && isExist(soundIds[soundName])) {
@@ -45,4 +40,4 @@ const stopSound = soundName => {
     }
 }
 
-export {setSoundJson, initSound, playSound, stopSound, isPlaying};
+export {setSoundJson, initSound, playSound, stopSound};

@@ -9,6 +9,7 @@ import UI from "../../MainGameComponents/UI";
 import {send} from "../../../sender/event-sender";
 import {ON_BONUS_GAME_CLOSE} from "../../../constants/events";
 import {ScalingButton} from '../../../components/ScalingButton';
+import {playSound, stopSound} from "../../../sound-engine/sound-engine";
 
 export class WheelOfFortune extends Container{
     constructor(stage, descriptor) {
@@ -64,6 +65,9 @@ export class WheelOfFortune extends Container{
     }
 
     rotate(){
+        playSound('reel_stop')
+        playSound('mix')
+
         UI.setVisiblePlayBtn(false)
         const balance = UI.getBalance()
         const bet = UI.getBet()
@@ -95,6 +99,9 @@ export class WheelOfFortune extends Container{
                                         const xWin = this.wins[index] * bet
                                         this.setWin(xWin, hasJackpot)
                                         this.exitButton.setVisible(true);
+
+                                        stopSound('mix')
+                                        playSound('stop_fx')
                                     }})
                             }})
                     }})

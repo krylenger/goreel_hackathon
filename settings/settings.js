@@ -416,7 +416,7 @@ export const settings = {
                 name: 'win'
             },
             land:{
-                x: 620,
+                x: 650,
                 y: 320,
                 scale: 1
             },

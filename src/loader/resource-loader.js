@@ -1,8 +1,8 @@
 import {Assets} from "pixi.js";
 import * as sender from "../sender/event-sender";
 import * as events from "../constants/events";
-import soundsprite from '../../res/sound/soundsprite.json'
-import {setSoundJson} from "../sound-engine/sound-engine";
+// import soundsprite from '../../res/sound/soundsprite.json'
+// import {setSoundJson} from "../sound-engine/sound-engine";
 
 export let spineResources;
 
@@ -25,7 +25,7 @@ export const loadAssetsToCache = async descriptor => {
 
     ])
 
-    setSoundJson(soundsprite)
+    // setSoundJson(soundsprite)
     spineResources = spineRes
 
 }

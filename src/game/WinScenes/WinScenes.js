@@ -1,7 +1,7 @@
 import {ContainerBase} from "../../components/base-oriented/container";
 import {SpineBase} from "../../components/base/spine-base";
-import {subscribe} from "../../sender/event-sender";
 import {ON_EVENT_WIN, ON_PLAY_BTN} from "../../constants/events";
+import {subscribe} from "../../sender/event-sender";
 import {playSound, stopSound} from "../../sound-engine/sound-engine";
 
 export class WinScenes extends ContainerBase{

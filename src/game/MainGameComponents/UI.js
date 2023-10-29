@@ -2,9 +2,9 @@ import {TextBase} from "../../components/base/text-base";
 import {ContainerBase} from "../../components/base-oriented/container";
 import {ScalingButton} from "../../components/ScalingButton";
 import {SpriteBase} from "../../components/base/sprite-base";
-import {send} from "../../sender/event-sender";
-import {ON_EVENT_WIN, ON_PLAY_BTN} from "../../constants/events";
 import {SoundButton} from "./SoundButton";
+import {ON_EVENT_WIN, ON_PLAY_BTN} from "../../constants/events";
+import {send} from "../../sender/event-sender";
 import {playSound} from "../../sound-engine/sound-engine";
 
 class UI {
@@ -24,7 +24,6 @@ class UI {
         this.playBtn = new ScalingButton(playBtnContainer, this.descriptor['playBtn']['btn'])
 
         this.soundButtonContainer = new ContainerBase(this.stage, this.descriptor['soundBtn'])
-
         this.sounButton = new SoundButton(this.soundButtonContainer, this.descriptor['soundBtn'])
 
         this.init = null
@@ -103,6 +102,7 @@ class UI {
         playSound('click')
         this.betDynamicText.setText(this.betValues[this.betValueIndex])
     }
+
     getBet(){
        return +this.betDynamicText.getText()
     }

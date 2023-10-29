@@ -1,5 +1,6 @@
 import UI from "../../MainGameComponents/UI";
 import gsap from 'gsap/all';
+import {ON_BONUS_GAME_CLOSE} from "../../../constants/events";
 import {Container} from "pixi.js";
 import {SpriteBaseOriented} from '../../../components/base-oriented/sprite-base-oriented';
 import {ContainerBase} from '../../../components/base-oriented/container';
@@ -8,10 +9,8 @@ import {SpriteBase} from '../../../components/base/sprite-base';
 import {TextBase} from '../../../components/base/text-base';
 import {ScalingButton} from '../../../components/ScalingButton';
 import {randomFromArr} from '../../../helpers/helper';
-import {ON_BONUS_GAME_CLOSE} from "../../../constants/events";
 import {send} from "../../../sender/event-sender";
 import {playSound, stopSound} from "../../../sound-engine/sound-engine";
-
 
 export class HeadAndTail extends Container{
     constructor(stage, descriptor) {

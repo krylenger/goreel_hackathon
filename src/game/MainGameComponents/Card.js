@@ -1,9 +1,9 @@
 import {SpineBase} from "../../components/base/spine-base";
+import {ON_BONUS_GAME_START, SET_CARDS_INTERACTIVE} from "../../constants/events";
+import gsap from "gsap/all";
 import {createTexture, randomFromArr} from "../../helpers/helper";
 import {send, subscribe} from "../../sender/event-sender";
-import {ON_BONUS_GAME_START, SET_CARDS_INTERACTIVE} from "../../constants/events";
 import {playSound, stopSound} from "../../sound-engine/sound-engine";
-import gsap from "gsap/all";
 
 export class Card extends SpineBase{
     constructor(stage, descriptor) {
@@ -29,13 +29,9 @@ export class Card extends SpineBase{
             this.setAnimation(0, 'click_win', false)
             this.addAnimation(0, 'flip_win', false, 2.7)
             gsap.delayedCall(2.7, ()=>  playSound('collect'))
-            gsap.delayedCall(3, () => {
-
-                send(ON_BONUS_GAME_START, placeholder.id)
-            })
+            gsap.delayedCall(3, () => send(ON_BONUS_GAME_START, placeholder.id))
 
         })
-
 
         subscribe(SET_CARDS_INTERACTIVE, ({detail}) => this.setInteractive(detail))
     }

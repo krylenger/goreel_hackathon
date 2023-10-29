@@ -1,0 +1,94 @@
+{
+  "src": [
+    "res/sound/soundsprite.ogg",
+    "res/sound/soundsprite.m4a",
+    "res/sound/soundsprite.mp3",
+    "res/sound/soundsprite.ac3"
+  ],
+  "sprite": {
+    "autoplay_drop_down": [
+      0,
+      1278.843537414966
+    ],
+    "background_main": [
+      3000,
+      28915.668934240362,
+      true
+    ],
+    "bg_anim-1": [
+      33000,
+      18033.333333333332
+    ],
+    "bg_anim-10": [
+      53000,
+      3366.666666666667,
+      true
+    ],
+    "bg_main": [
+      58000,
+      3033.333333333331,
+      true
+    ],
+    "carriage_anim-1": [
+      63000,
+      19299.97732426304
+    ],
+    "carriage_anim-10": [
+      84000,
+      2033.3333333333314,
+      true
+    ],
+    "carriage_anim-crush": [
+      88000,
+      3033.333333333331
+    ],
+    "carriage_anim-crushed": [
+      93000,
+      3815.600907029477
+    ],
+    "click_cancel": [
+      98000,
+      1500
+    ],
+    "click_cash_out": [
+      101000,
+      2168.684807256241
+    ],
+    "click_go": [
+      105000,
+      1445.7823129251751
+    ],
+    "click_play": [
+      108000,
+      2110.2040816326594
+    ],
+    "cost_drop_down": [
+      112000,
+      1007.36961451247
+    ],
+    "info": [
+      115000,
+      167.70975056689963
+    ],
+    "multiplier_drop_down": [
+      117000,
+      1243.1746031746088
+    ],
+    "mute": [
+      120000,
+      221.6553287981924
+    ],
+    "pause_animation": [
+      122000,
+      4033.333333333331
+    ],
+    "soundsprite": [
+      128000,
+      133000
+    ],
+    "timer": [
+      262000,
+      6868.63945578233
+    ]
+  }
+}

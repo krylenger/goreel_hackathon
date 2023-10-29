@@ -7,6 +7,8 @@ import {SpineBase} from "../../../components/base/spine-base";
 import {randomFromArr} from "../../../helpers/helper";
 import {TextBase} from "../../../components/base/text-base";
 import {ScalingButton} from '../../../components/ScalingButton';
+import {send} from "../../../sender/event-sender";
+import {ON_BONUS_GAME_CLOSE} from "../../../constants/events";
 
 
 export class Thimbles extends Container {
@@ -16,7 +18,6 @@ export class Thimbles extends Container {
         this.descriptor = descriptor
 
         this.currentBet = null;
-        this.restartGame = null;
 
         this.bg = new SpriteBaseOriented(this, descriptor['bg'])
         this.bg.addToStage()
@@ -102,14 +103,13 @@ export class Thimbles extends Container {
         UI.setVisiblePlayBtn(true)
     }
 
-    open(restartGame){
+    open(){
         UI.setPlayBtnEnabled(false)
         UI.setPlayBtnAction(this.onPlayBtn.bind(this))
         UI.setVisiblePlayBtn(true)
         this.visible = true
         this.alpha = 0
         this.exitButton.setVisible(false);
-        this.restartGame = restartGame;
         gsap.to(this, {pixi: {alpha: 1}, duration: 2, onComplete:() =>{
                 UI.setPlayBtnEnabled(true)
             }})
@@ -117,17 +117,12 @@ export class Thimbles extends Container {
     }
 
     close(){
-        UI.setPlayBtnEnabled(false)
-
+        this.exitButton.setVisible(false);
         gsap.to(this, {pixi: {alpha: 0}, duration: 2, onComplete: () =>{
-                UI.setVisiblePlayBtn(false)
-                UI.setPlayBtnEnabled(true)
-                UI.setPlayBtnAction(null)
                 this.alpha = 1
                 this.visible = false
-                this.restartGame();
             }})
-
+       send(ON_BONUS_GAME_CLOSE)
     }
 
 

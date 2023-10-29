@@ -45,6 +45,7 @@ class UI {
 
     setVisiblePlayBtn(visible){
         this.playBtn.setVisible(visible)
+        this.betTextContainer.setVisible(visible)
     }
 
     createBalance(){
@@ -59,13 +60,13 @@ class UI {
         this.winDynamicText = new TextBase(winTextContainer, this.descriptor['win']['dynamicText'])
     }
     createBet(){
-        const betTextContainer = new ContainerBase(this.stage, this.descriptor['bet'])
+        this.betTextContainer = new ContainerBase(this.stage, this.descriptor['bet'])
 
-        this.betRectangle = new SpriteBase(betTextContainer,  this.descriptor['bet']['rectangle'])
-        this.betStaticText = new SpriteBase(betTextContainer, this.descriptor['bet']['staticText'])
-        this.betDynamicText = new TextBase(betTextContainer, this.descriptor['bet']['dynamicText'])
-        this.upClickArea = new ScalingButton(betTextContainer, this.descriptor['bet']['upClickArea'], this.onUpClickArea.bind(this))
-        this.downClickArea = new ScalingButton(betTextContainer, this.descriptor['bet']['downClickArea'], this.onDownClickArea.bind(this))
+        this.betRectangle = new SpriteBase(this.betTextContainer,  this.descriptor['bet']['rectangle'])
+        this.betStaticText = new SpriteBase(this.betTextContainer, this.descriptor['bet']['staticText'])
+        this.betDynamicText = new TextBase(this.betTextContainer, this.descriptor['bet']['dynamicText'])
+        this.upClickArea = new ScalingButton(this.betTextContainer, this.descriptor['bet']['upClickArea'], this.onUpClickArea.bind(this))
+        this.downClickArea = new ScalingButton(this.betTextContainer, this.descriptor['bet']['downClickArea'], this.onDownClickArea.bind(this))
     }
 
     onUpClickArea(){
@@ -90,8 +91,8 @@ class UI {
         return +this.balanceDynamicText.getText()
     }
 
-    setWin(win){
-        send(ON_EVENT_WIN, {win})
+    setWin(win, hasJackpot = false){
+        send(ON_EVENT_WIN, {win, bigWin: hasJackpot})
         this.winDynamicText.setText(win.toFixed(2))
     }
     getWin(){

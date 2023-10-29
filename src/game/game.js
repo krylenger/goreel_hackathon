@@ -2,8 +2,8 @@ import UI from "./MainGameComponents/UI";
 import {SpriteBaseOriented} from "../components/base-oriented/sprite-base-oriented";
 import {ContainerBase} from "../components/base-oriented/container";
 import {Card} from "./MainGameComponents/Card";
-import {subscribe} from "../sender/event-sender";
-import {ON_BONUS_GAME_START} from "../constants/events";
+import {send, subscribe} from "../sender/event-sender";
+import {ON_BONUS_GAME_CLOSE, ON_BONUS_GAME_START, SET_CARDS_INTERACTIVE} from "../constants/events";
 import {Container} from "pixi.js";
 import {WheelOfFortune} from "./SmallGames/WheelOfFortune/WheelOfFortune";
 import {HeadAndTail} from './SmallGames/HeadAndTail/HeadAndTail';
@@ -34,19 +34,13 @@ export class Game {
         this.headAndTail = new HeadAndTail(this.stage, this.descriptor.headAndTail);
         this.headAndTail.visible = false;
 
-        this._restartGame = this.restartGame.bind(this);
-
-
         UI.init(this.stage, this.descriptor['ui'])
         UI.setVisiblePlayBtn(false)
 
 
         this.winScenes = new WinScenes(stage, descriptor.winScenes)
 
-        // this.wheelOfFortune.open(this._restartGame)
-        // this.setMainGameVisibility(false)
-
-
+        subscribe(ON_BONUS_GAME_CLOSE, () => this.restartGame())
         subscribe(ON_BONUS_GAME_START, ({detail}) => this.onBonusGameStart(detail))
 
     }
@@ -54,13 +48,13 @@ export class Game {
     onBonusGameStart(detail){
         switch (detail) {
             case 0:
-                this.headAndTail.open(this._restartGame)
+                this.headAndTail.open()
                 break
             case 1:
-                this.thimbles.open(this._restartGame)
+                this.thimbles.open()
                 break
             case 2:
-                this.wheelOfFortune.open(this._restartGame)
+                this.wheelOfFortune.open()
                 break
 
         }
@@ -86,10 +80,7 @@ export class Game {
     setMainGameVisibility(bool){
 
         if(bool){
-
-            // this.mainGameContainer.alpha = 0
             this.mainGameContainer.visible = true
-            // gsap.to(this.mainGameContainer, {pixi: {alpha: 1}, duration: 2})
         } else {
             gsap.to(this.mainGameContainer, {pixi: {alpha: 0}, duration: 2, onComplete: () => {
                     this.mainGameContainer.alpha = 1
@@ -101,6 +92,9 @@ export class Game {
 
     restartGame() {
         this.setMainGameVisibility(true);
+        UI.setVisiblePlayBtn(false)
+        UI.setPlayBtnAction(null)
+        gsap.delayedCall(2, () => send(SET_CARDS_INTERACTIVE, true))
     }
 
 

@@ -7,7 +7,7 @@ import {SpineBase} from "../../../components/base/spine-base";
 import {randomFromArr, randomMinMax} from "../../../helpers/helper";
 import UI from "../../MainGameComponents/UI";
 import {send} from "../../../sender/event-sender";
-import {ON_EVENT_WIN} from "../../../constants/events";
+import {ON_BONUS_GAME_CLOSE} from "../../../constants/events";
 import {ScalingButton} from '../../../components/ScalingButton';
 
 export class WheelOfFortune extends Container{
@@ -15,8 +15,6 @@ export class WheelOfFortune extends Container{
         super()
         this.stage = stage
         this.descriptor = descriptor
-
-        this.restartGame = null;
 
         this.wins = [5, 0.5, 2, 0.1, 10, 0, 5, 0.5, 2, 0.1, 10, 0]
 
@@ -42,12 +40,11 @@ export class WheelOfFortune extends Container{
 
     }
 
-    open(restartGame){
+    open(){
         UI.setPlayBtnEnabled(false)
         UI.setPlayBtnAction(this.rotate.bind(this))
         UI.setVisiblePlayBtn(true)
         this.exitButton.setVisible(false);
-        this.restartGame = restartGame;
         this.visible = true
         this.alpha = 0
         gsap.to(this, {pixi: {alpha: 1}, duration: 2, onComplete:() =>{
@@ -57,17 +54,13 @@ export class WheelOfFortune extends Container{
     }
 
     close(){
-        UI.setPlayBtnEnabled(false)
-
+        this.exitButton.setVisible(false);
         gsap.to(this, {pixi: {alpha: 0}, duration: 2, onComplete: () =>{
-                UI.setVisiblePlayBtn(false)
-                UI.setPlayBtnEnabled(true)
-                UI.setPlayBtnAction(null)
                 this.alpha = 1
                 this.visible = false
-                this.restartGame();
             }})
 
+        send(ON_BONUS_GAME_CLOSE)
     }
 
     rotate(){
@@ -97,10 +90,10 @@ export class WheelOfFortune extends Container{
 
                                         const index = Math.round(this.drum.angle/30)
 
-                                        if(this.wins[index] === 10) send(ON_EVENT_WIN, {bigWin: true});
+                                        const hasJackpot = this.wins[index] === 10
 
                                         const xWin = this.wins[index] * bet
-                                        this.setWin(xWin)
+                                        this.setWin(xWin, hasJackpot)
                                         this.exitButton.setVisible(true);
                                     }})
                             }})
@@ -109,9 +102,9 @@ export class WheelOfFortune extends Container{
 
     }
 
-    setWin(xWin){
+    setWin(xWin, hasJackpot){
 
-        UI.setWin(xWin)
+        UI.setWin(xWin, hasJackpot)
         const balance = UI.getBalance()
         UI.setBalance(balance + xWin)
         UI.setVisiblePlayBtn(true)

@@ -330,6 +330,19 @@ export const settings = {
                     x: 524,
                     y: 1105,
                 }
+            },
+            soundBtn: {
+                textureName: 'sound_off',
+                textureNames: ['sound_off', 'sound_on'],
+                scaleOver: 1.1,
+                land:{
+                    x: 70,
+                    y: 64,
+                },
+                port:{
+                    x: 70,
+                    y: 70,
+                }
             }
         },
         winScenes:{
@@ -337,7 +350,7 @@ export const settings = {
                 name: 'big_win'
             },
             land:{
-                x: 610,
+                x: 620,
                 y: 320,
                 scale: 1
             },
@@ -421,8 +434,15 @@ export const settings = {
             {
                 "name": "crownCoin",
                 "srcs": "res/textures/small_games/crownCoin.png"
-            }
-
+            },
+            {
+                "name": "sound_off",
+                "srcs": "res/textures/sound_off.png"
+            },
+            {
+                "name": "sound_on",
+                "srcs": "res/textures/sound_on.png"
+            },
         ],
         spines: [
             {

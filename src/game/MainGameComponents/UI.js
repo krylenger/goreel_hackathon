@@ -4,6 +4,7 @@ import {ScalingButton} from "../../components/ScalingButton";
 import {SpriteBase} from "../../components/base/sprite-base";
 import {send} from "../../sender/event-sender";
 import {ON_EVENT_WIN, ON_PLAY_BTN} from "../../constants/events";
+import {SoundButton} from "./SoundButton";
 
 class UI {
     init(stage, descriptor){
@@ -20,6 +21,12 @@ class UI {
 
         const playBtnContainer = new ContainerBase(this.stage, this.descriptor['playBtn'])
         this.playBtn = new ScalingButton(playBtnContainer, this.descriptor['playBtn']['btn'])
+
+
+
+        this.soundButtonContainer = new ContainerBase(this.stage, this.descriptor['soundBtn'])
+
+        this.sounButton = new SoundButton(this.soundButtonContainer, this.descriptor['soundBtn'])
 
         this.init = null
     }

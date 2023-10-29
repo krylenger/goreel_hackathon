@@ -8,6 +8,8 @@ import {SpriteBase} from '../../../components/base/sprite-base';
 import {TextBase} from '../../../components/base/text-base';
 import {ScalingButton} from '../../../components/ScalingButton';
 import {randomFromArr} from '../../../helpers/helper';
+import {ON_BONUS_GAME_CLOSE} from "../../../constants/events";
+import {send} from "../../../sender/event-sender";
 
 
 export class HeadAndTail extends Container{
@@ -17,7 +19,6 @@ export class HeadAndTail extends Container{
         this.descriptor = descriptor;
 
         this.currentBet = null;
-        this.restartGame = null;
 
         this.bg = new SpriteBaseOriented(this, descriptor['bg']);
         this.bg.addToStage();
@@ -49,14 +50,12 @@ export class HeadAndTail extends Container{
         this.stage.addChild(this);
     }
 
-    open(restartGame){
+    open(){
         this.visible = true;
         this.alpha = 0
         gsap.to(this, {pixi: {alpha: 1}, duration: 2, onComplete:() =>{
                 UI.setVisiblePlayBtn(true);
                 UI.setPlayBtnAction(this.startGame.bind(this));
-                this.startGame();
-                this.restartGame = restartGame;
             }})
     }
 
@@ -75,7 +74,6 @@ export class HeadAndTail extends Container{
         this.coinSpine.setVisible(false);
         this.exitButton.setVisible(false);
     }
-
 
     flipCoin(side) {
         if (!side) return;
@@ -124,15 +122,12 @@ export class HeadAndTail extends Container{
     }
 
     close(){
-        UI.setPlayBtnEnabled(false);
-
-        gsap.to(this, {pixi: {alpha: 0}, duration: 0, onComplete: () =>{
-                UI.setVisiblePlayBtn(false)
-                UI.setPlayBtnEnabled(true)
-                UI.setPlayBtnAction(null)
+        this.exitButton.setVisible(false);
+        gsap.to(this, {pixi: {alpha: 0}, duration: 2, onComplete: () =>{
                 this.alpha = 1
                 this.visible = false
-                this.restartGame()
             }})
+        send(ON_BONUS_GAME_CLOSE)
+
     }
 }

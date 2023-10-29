@@ -11,6 +11,13 @@ coin
   orig: 100, 110
   offset: 0, 0
   index: -1
+dot
+  rotate: false
+  xy: 316, 43
+  size: 59, 59
+  orig: 59, 59
+  offset: 0, 0
+  index: -1
 win
   rotate: false
   xy: 2, 35

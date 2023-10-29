@@ -421,7 +421,7 @@ export const settings = {
                 scale: 1
             },
             port:{
-                x: 350,
+                x: 360,
                 y: 600,
                 scale: 0.8
             }

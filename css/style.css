@@ -15,7 +15,6 @@ body{
     top: 0;
     bottom: 0;
     background-color: var(--main-bg-color);
-    background-image: url("../res/common/css_bg.png");
     background-repeat: repeat;
     overflow: hidden;
 

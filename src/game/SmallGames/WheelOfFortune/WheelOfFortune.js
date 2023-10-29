@@ -69,6 +69,7 @@ export class WheelOfFortune extends Container{
         playSound('mix')
 
         UI.setVisiblePlayBtn(false)
+        this.exitButton.setVisible(false);
         const balance = UI.getBalance()
         const bet = UI.getBet()
         UI.setWin(0)

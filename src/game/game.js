@@ -48,18 +48,18 @@ export class Game {
 
     onBonusGameStart(detail){
         playSound('stop_fx')
-        switch (detail) {
-            case 0:
-                this.headAndTail.open()
-                break
-            case 1:
-                this.thimbles.open()
-                break
-            case 2:
+        // switch (detail) {
+        //     case 0:
+        //         this.headAndTail.open()
+        //         break
+        //     case 1:
+        //         this.thimbles.open()
+        //         break
+        //     case 2:
                 this.wheelOfFortune.open()
-                break
-
-        }
+        //         break
+        //
+        // }
 
         this.setMainGameVisibility(false)
     }

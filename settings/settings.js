@@ -445,7 +445,6 @@ export const settings = {
                 "name": "small_games",
                 "srcs": "res/textures/small_games.json"
             },
-
             {
                 "name": "ui",
                 "srcs": "res/textures/ui.json"
@@ -486,7 +485,6 @@ export const settings = {
                 "name": "Franklin",
                 "srcs": "res/fonts/franklin.woff",
             },
-
         ],
     }
 }

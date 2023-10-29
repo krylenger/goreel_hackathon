@@ -52,7 +52,6 @@ export class Thimbles extends Container {
         this.currentBet = UI.getBet()
         UI.setWin(0)
         UI.setBalance(balance - this.currentBet)
-
         UI.setVisiblePlayBtn(false)
         this.thimbles.setAnimation(0, this.anims[this.ballIndex],false)
         this.thimbles.addAnimation(0, 'mixing',false, 2)

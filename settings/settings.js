@@ -331,7 +331,22 @@ export const settings = {
                     y: 1105,
                 }
             }
-        }
+        },
+        winScenes:{
+            bigWin:{
+                name: 'big_win'
+            },
+            land:{
+                x: 610,
+                y: 320,
+                scale: 1
+            },
+            port:{
+                x: 350,
+                y: 600,
+                scale: 0.8
+            }
+        },
     },
     loader:{
         textures:[
@@ -429,6 +444,10 @@ export const settings = {
             {
                 "name": "coinSpine",
                 "srcs": "res/spines/money/money.json"
+            },
+            {
+                "name": "big_win",
+                "srcs": "res/spines/wins/big_win.json"
             }
         ],
         fonts: [

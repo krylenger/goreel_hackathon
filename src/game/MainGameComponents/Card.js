@@ -16,7 +16,7 @@ export class Card extends SpineBase{
         this.on('pointerup', () => {
 
             send(SET_CARDS_INTERACTIVE, false)
-            const randomInd = randomFromArr([1, 2])
+            const randomInd = randomFromArr([0, 1, 2])
             const rnd = [0, 1, 2][randomInd]
             const placeholder = this.descriptor.placeholders[rnd]
             const textureName = placeholder.textureName

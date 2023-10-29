@@ -6,6 +6,8 @@ import gsap from 'gsap/all'
 import {SpineBase} from "../../../components/base/spine-base";
 import {randomFromArr, randomMinMax} from "../../../helpers/helper";
 import UI from "../../MainGameComponents/UI";
+import {send} from "../../../sender/event-sender";
+import {ON_EVENT_WIN} from "../../../constants/events";
 
 export class WheelOfFortune extends Container{
     constructor(stage, descriptor) {
@@ -67,22 +69,27 @@ export class WheelOfFortune extends Container{
 
         const pos = randomFromArr([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
 
-        const repeat = randomFromArr([0,0, 0, 1, 1, 1, 1, 1, 2, 2, 3, 3])
+        const repeat = randomFromArr([0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 2, 2])
 
-        const xTime = randomMinMax(5, repeat === 3 ? 7 : 10)/10
+        const xTime = randomMinMax(5, repeat === 3 ? 7 : 12)/10
 
         gsap.to(this.drum, {
-            pixi: {angle: this.drum.angle + 30}, duration: 0.7 * xTime, ease: 'Back.easeIn(3)',
+            pixi: {angle: this.drum.angle + 30}, duration: 0.5 * xTime, ease: 'Back.easeIn(3)',
             onComplete: ()=>{
                 gsap.to(this.drum, {
-                    pixi: {angle: this.drum.angle + 360}, duration: 1.2*xTime, repeat, ease: 'Power0.easeInOut',
+                    pixi: {angle: this.drum.angle + 360}, duration: 1*xTime, repeat, ease: 'Power0.easeInOut',
                     onComplete: () =>{
                         gsap.to(this.drum, {
-                            pixi: {angle: this.drum.angle + pos * 30}, duration: 1.2*xTime* pos/12, ease: 'Power0.easeInOut',
+                            pixi: {angle: this.drum.angle + pos * 30}, duration: 1*xTime* pos/12, ease: 'Power0.easeInOut',
                             onComplete: () =>{
-                                gsap.to(this.drum, {pixi: {angle: this.drum.angle + 60}, duration: 0.9 * xTime, ease: 'Back.easeOut', onComplete:() =>{
+                                gsap.to(this.drum, {pixi: {angle: this.drum.angle + 60}, duration: 0.7 * xTime, ease: 'Back.easeOut', onComplete:() =>{
                                         this.drum.angle = this.drum.angle % 360
-                                        const xWin = this.wins[Math.round(this.drum.angle/30)] * bet
+
+                                        const index = Math.round(this.drum.angle/30)
+
+                                        if(this.wins[index] === 10) send(ON_EVENT_WIN, {bigWin: true});
+
+                                        const xWin = this.wins[index] * bet
                                         this.setWin(xWin)
                                     }})
                             }})
@@ -90,7 +97,6 @@ export class WheelOfFortune extends Container{
             }})
 
     }
-
 
     setWin(xWin){
 

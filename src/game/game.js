@@ -9,6 +9,7 @@ import {WheelOfFortune} from "./SmallGames/WheelOfFortune/WheelOfFortune";
 import {HeadAndTail} from './SmallGames/HeadAndTail/HeadAndTail';
 import gsap from "gsap/all";
 import {Thimbles} from "./SmallGames/Thimbles/Thimbles";
+import {WinScenes} from "./WinScenes/WinScenes";
 
 export class Game {
     constructor(stage, descriptor) {
@@ -38,25 +39,29 @@ export class Game {
         UI.setVisiblePlayBtn(false)
 
 
-        subscribe(ON_BONUS_GAME_START, ({detail}) => {
+        this.winScenes = new WinScenes(stage, descriptor.winScenes)
 
-            switch (detail) {
-                case 0:
-                    this.headAndTail.open()
-                    break
-                case 1:
-                    this.thimbles.open()
-                    break
-                case 2:
-                    this.wheelOfFortune.open()
-                    break
 
-            }
+        subscribe(ON_BONUS_GAME_START, ({detail}) => this.onBonusGameStart(detail))
 
-            this.setMainGameVisibility(false)
+    }
 
-        })
 
+    onBonusGameStart(detail){
+        switch (detail) {
+            case 0:
+                this.headAndTail.open()
+                break
+            case 1:
+                this.thimbles.open()
+                break
+            case 2:
+                this.wheelOfFortune.open()
+                break
+
+        }
+
+        this.setMainGameVisibility(false)
     }
 
     createCards(){

@@ -53,6 +53,11 @@ export class SpineBase extends Spine{
         this.state.addAnimation(trackIndex, animationName, loop, delay)
     }
 
+    stopAnimation(trackIndex){
+        this.state.clearTrack(trackIndex);
+        this.skeleton.setToSetupPose()
+    }
+
     setMix(from, to, duration){
         this.stateData.setMix(from, to, duration)
     }

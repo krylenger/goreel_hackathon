@@ -2,6 +2,8 @@ import {TextBase} from "../../components/base/text-base";
 import {ContainerBase} from "../../components/base-oriented/container";
 import {ScalingButton} from "../../components/ScalingButton";
 import {SpriteBase} from "../../components/base/sprite-base";
+import {send} from "../../sender/event-sender";
+import {ON_EVENT_WIN, ON_PLAY_BTN} from "../../constants/events";
 
 class UI {
     init(stage, descriptor){
@@ -16,7 +18,6 @@ class UI {
         this.createBet()
         this.updateBet()
 
-
         const playBtnContainer = new ContainerBase(this.stage, this.descriptor['playBtn'])
         this.playBtn = new ScalingButton(playBtnContainer, this.descriptor['playBtn']['btn'])
 
@@ -29,7 +30,10 @@ class UI {
     }
 
     setPlayBtnAction(fn){
-        this.playBtn.setAction(fn)
+        this.playBtn.setAction(() => {
+            fn();
+            send(ON_PLAY_BTN)
+        })
     }
 
     setVisiblePlayBtn(visible){
@@ -80,6 +84,7 @@ class UI {
     }
 
     setWin(win){
+        send(ON_EVENT_WIN, {win})
         this.winDynamicText.setText(win.toFixed(2))
     }
     getWin(){

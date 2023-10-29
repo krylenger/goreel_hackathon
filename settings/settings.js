@@ -329,7 +329,7 @@ export const settings = {
         fonts: [
             {
                 "name": "Franklin",
-                "srcs": "res/fonts/franklin.ttf",
+                "srcs": "res/fonts/franklin.woff",
             },
 
         ],

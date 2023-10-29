@@ -78,6 +78,99 @@ export const settings = {
             },
 
         },
+        headAndTail:{
+            bg:{
+                land:{
+                    textureName: 'bg_bonus_land'
+                },
+                port:{
+                    textureName: 'bg_bonus_port'
+                }
+            },
+            mainContainer:{
+                bgFrame:{
+                    textureName: 'krug'
+                },
+                diamondCoin:{
+                    anchorX: 0.5,
+                    anchorY: 0.5,
+                    textureName: 'diamondCoin',
+                    x: 150,
+                    y: 288,
+                    scaleOver: 1.1,
+                },
+                crownCoin:{
+                    anchorX: 0.5,
+                    anchorY: 0.5,
+                    textureName: 'crownCoin',
+                    x: 450,
+                    y: 288,
+                    scaleOver: 1.1,
+                },
+                chosenSideCont: {
+                    name: 'chosenSideCont',
+                    land:{
+                        x: 25,
+                        y: 100
+                    },
+                    port:{
+                        x: 25,
+                        y: 50
+                    }
+                },
+                chosenDiamond:{
+                    anchorX: 0.5,
+                    anchorY: 0.5,
+                    textureName: 'diamondCoin',
+                    height: 75,
+                    width: 75,
+                    x: 0,
+                    y: 0,
+                },
+                chosenCrown:{
+                    anchorX: 0.5,
+                    anchorY: 0.5,
+                    textureName: 'crownCoin',
+                    height: 75,
+                    width: 75,
+                    x: 100,
+                    y: 0,
+                },
+                chooseHeader: {
+                    text: 'Please choose: \nDiamond or Crown.',
+                    style:{
+                        "fontFamily":'Franklin',
+                        "fontSize": "42px",
+                        "fontWeight": 'bold',
+                        "align": 'center',
+                        "fill": ['#e4ac19','#f3e047', '#e4ac19'],
+                    },
+                    anchorY: 0.5,
+                    x: 120,
+                    y: 480
+                },
+                coinSpine: {
+                    name: 'coinSpine',
+                    land:{
+                        x: 288,
+                        y: 500
+                    },
+                    port:{
+                        x: 288,
+                        y: 450
+                    }
+                },
+                land:{
+                    x: 350,
+                    y: 50
+                },
+                port:{
+                    x: 70,
+                    y: 375
+                }
+            },
+
+        },
         thimbles:{
             bg:{
                 land:{
@@ -306,6 +399,14 @@ export const settings = {
                 "name": "lamps",
                 "srcs": "res/textures/small_games/lamps.png"
             },
+            {
+                "name": "diamondCoin",
+                "srcs": "res/textures/small_games/diamondCoin.png"
+            },
+            {
+                "name": "crownCoin",
+                "srcs": "res/textures/small_games/crownCoin.png"
+            }
 
         ],
         spines: [
@@ -325,6 +426,10 @@ export const settings = {
                 "name": "light",
                 "srcs": "res/spines/wheel/wheel.json"
             },
+            {
+                "name": "coinSpine",
+                "srcs": "res/spines/money/money.json"
+            }
         ],
         fonts: [
             {

@@ -6,6 +6,7 @@ import {subscribe} from "../sender/event-sender";
 import {ON_BONUS_GAME_START} from "../constants/events";
 import {Container} from "pixi.js";
 import {WheelOfFortune} from "./SmallGames/WheelOfFortune/WheelOfFortune";
+import {HeadAndTail} from './SmallGames/HeadAndTail/HeadAndTail';
 import gsap from "gsap/all";
 import {Thimbles} from "./SmallGames/Thimbles/Thimbles";
 
@@ -29,6 +30,9 @@ export class Game {
         this.thimbles = new Thimbles(this.stage, this.descriptor.thimbles)
         this.thimbles.visible = false
 
+        this.headAndTail = new HeadAndTail(this.stage, this.descriptor.headAndTail);
+        this.headAndTail.visible = false;
+
 
         UI.init(this.stage, this.descriptor['ui'])
         UI.setVisiblePlayBtn(false)
@@ -38,8 +42,7 @@ export class Game {
 
             switch (detail) {
                 case 0:
-                    // this.thimbles.open()
-
+                    this.headAndTail.open()
                     break
                 case 1:
                     this.thimbles.open()

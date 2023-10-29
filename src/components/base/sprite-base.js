@@ -53,4 +53,8 @@ export class SpriteBase extends Sprite{
         this.visible = visible;
     }
 
+    addListener() {
+
+    }
+
 }

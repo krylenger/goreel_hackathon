@@ -69,18 +69,18 @@ export class WheelOfFortune extends Container{
 
         const repeat = randomFromArr([0,0, 0, 1, 1, 1, 1, 1, 2, 2, 3, 3])
 
-        const xTime = randomMinMax(5, repeat === 3 ? 7 : 14)/10
+        const xTime = randomMinMax(5, repeat === 3 ? 7 : 10)/10
 
         gsap.to(this.drum, {
-            pixi: {angle: this.drum.angle + 30}, duration: 0.75 * xTime, ease: 'Back.easeIn(3)',
+            pixi: {angle: this.drum.angle + 30}, duration: 0.7 * xTime, ease: 'Back.easeIn(3)',
             onComplete: ()=>{
                 gsap.to(this.drum, {
-                    pixi: {angle: this.drum.angle + 360}, duration: 1.5*xTime, repeat, ease: 'Power0.easeInOut',
+                    pixi: {angle: this.drum.angle + 360}, duration: 1.2*xTime, repeat, ease: 'Power0.easeInOut',
                     onComplete: () =>{
                         gsap.to(this.drum, {
-                            pixi: {angle: this.drum.angle + pos * 30}, duration: 1.5*xTime* pos/12, ease: 'Power0.easeInOut',
+                            pixi: {angle: this.drum.angle + pos * 30}, duration: 1.2*xTime* pos/12, ease: 'Power0.easeInOut',
                             onComplete: () =>{
-                                gsap.to(this.drum, {pixi: {angle: this.drum.angle + 60}, duration: xTime, ease: 'Back.easeOut', onComplete:() =>{
+                                gsap.to(this.drum, {pixi: {angle: this.drum.angle + 60}, duration: 0.9 * xTime, ease: 'Back.easeOut', onComplete:() =>{
                                         this.drum.angle = this.drum.angle % 360
                                         const xWin = this.wins[Math.round(this.drum.angle/30)] * bet
                                         this.setWin(xWin)

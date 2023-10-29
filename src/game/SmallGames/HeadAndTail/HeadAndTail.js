@@ -58,7 +58,7 @@ export class HeadAndTail extends Container{
         UI.setVisiblePlayBtn(false);
         const balance = UI.getBalance();
         this.currentBet = UI.getBet();
-
+        UI.setWin(0)
         UI.setBalance(balance - this.currentBet);
 
         this.diamondCoin.setVisible(true);

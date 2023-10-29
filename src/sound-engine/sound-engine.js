@@ -5,27 +5,22 @@ import {ON_SET_SOUNDS_ON_OFF} from "../constants/events";
 import soundJson from  '../../res/sound/soundsprite.json'
 
 let sound = null;
-
-// let soundJson = null;
-
+let isInited = false
 const soundIds = {};
 
-const setSoundJson = json => soundJson = json;
+window.addEventListener('blur', ()=> Howler.mute(true))
+window.addEventListener('focus', ()=> Howler.mute(false))
+subscribe(ON_SET_SOUNDS_ON_OFF, ({detail: allow}) => onSetSoundsOnOff(allow));
 
-let isInited = false
+const onSetSoundsOnOff = allow => {
+    if(allow && !isInited) init()
+    Howler.mute(!allow)
+}
 
-
-subscribe(ON_SET_SOUNDS_ON_OFF, ({detail: allow}) => {
-    if(allow && !isInited) {
-        initSound()
-        isInited = true
-    }
-        Howler.mute(!allow)
-});
-
-
-const initSound = () => sound = new Howl(soundJson);
-
+const init = () => {
+    sound = new Howl(soundJson)
+    isInited = true
+};
 
 const playSound = soundName =>  {
     if(!isInited) return
@@ -35,10 +30,8 @@ const playSound = soundName =>  {
 const stopSound = soundName => {
     if(!isInited) return
     if(isExist(soundName) && isExist(sound) && isExist(soundIds[soundName])) {
-
         sound.stop(soundIds[soundName]);
-
     }
 }
 
-export {setSoundJson, initSound, playSound, stopSound};
+export {playSound, stopSound};

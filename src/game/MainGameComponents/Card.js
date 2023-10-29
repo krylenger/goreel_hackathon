@@ -11,8 +11,6 @@ export class Card extends SpineBase{
         this.eventMode = 'static'
         this.cursor = 'pointer';
 
-        this.isOpened = false
-
         this.on('pointerup', () => {
 
             send(SET_CARDS_INTERACTIVE, false)
@@ -24,9 +22,12 @@ export class Card extends SpineBase{
 
             this.addToStage()
             this.setAnimation(0, 'click_win', false)
-            this.isOpened = true
+            this.addAnimation(0, 'flip_win', false, 2.7)
 
-            setTimeout(() =>  send(ON_BONUS_GAME_START, placeholder.id), 3000)
+            setTimeout(() => {
+                send(ON_BONUS_GAME_START, placeholder.id)
+
+            }, 3000)
         })
 
 
@@ -39,7 +40,7 @@ export class Card extends SpineBase{
     }
 
     setInteractive(bool){
-        this.eventMode = bool && !this.isOpened ? 'static' : 'none'
+        this.eventMode = bool ? 'static' : 'none'
     }
 
     replacePlaceholder(textureName){

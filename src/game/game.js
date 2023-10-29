@@ -64,7 +64,6 @@ export class Game {
         this.setMainGameVisibility(false)
     }
 
-
     createCards(){
         const cardsContainer = new ContainerBase(this.mainGameContainer, this.descriptor['main'].cards)
 

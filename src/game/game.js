@@ -47,7 +47,7 @@ export class Game {
     }
 
     onBonusGameStart(detail){
-        playSound('bonus_win')
+        playSound('stop_fx')
         switch (detail) {
             case 0:
                 this.headAndTail.open()

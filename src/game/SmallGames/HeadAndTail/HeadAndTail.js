@@ -115,7 +115,6 @@ export class HeadAndTail extends Container{
     }
 
     setWin(win) {
-        console.log('WIN', win);
         UI.setWin(win)
         const balance = UI.getBalance()
         UI.setBalance(balance + win)

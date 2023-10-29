@@ -78,12 +78,12 @@ export const settings = {
                 exitButtonCont: {
                     name: 'exitButtonCont',
                     land:{
-                        x: 558,
-                        y: 80
+                        x: 850,
+                        y: 20
                     },
                     port:{
-                        x: 558,
-                        y: 40
+                        x: 580,
+                        y: -300
                     }
                 },
                 exitButton:{
@@ -192,12 +192,12 @@ export const settings = {
                 exitButtonCont: {
                     name: 'exitButtonCont',
                     land:{
-                        x: 550,
-                        y: 90
+                        x: 850,
+                        y: 30
                     },
                     port:{
-                        x: 550,
-                        y: 40
+                        x: 570,
+                        y: -300
                     }
                 },
                 exitButton:{
@@ -236,12 +236,12 @@ export const settings = {
             exitButtonCont: {
                 name: 'exitButtonCont',
                 land:{
-                    x: 260,
-                    y: -390
+                    x: 560,
+                    y: -450
                 },
                 port:{
-                    x: 260,
-                    y: -430
+                    x: 280,
+                    y: -780
                 }
             },
             exitButton:{

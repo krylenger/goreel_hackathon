@@ -1,0 +1,13 @@
+npm-debug.log
+node_modules/
+dist/
+*.log
+.DS_Store
+ehthumbs.db
+Thumbs.db
+.idea/
+.cache/
+.vscode/
+.idea
+.gitignore
+package-lock.json

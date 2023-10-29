@@ -46,9 +46,12 @@ export class HeadAndTail extends Container{
 
     open(){
         this.visible = true;
-        UI.setVisiblePlayBtn(true);
-        UI.setPlayBtnAction(this.startGame.bind(this));
-        this.startGame();
+        this.alpha = 0
+        gsap.to(this, {pixi: {alpha: 1}, duration: 2, onComplete:() =>{
+                UI.setVisiblePlayBtn(true);
+                UI.setPlayBtnAction(this.startGame.bind(this));
+                this.startGame();
+            }})
     }
 
     startGame() {
@@ -105,14 +108,10 @@ export class HeadAndTail extends Container{
     }
 
     setWin(win) {
-        console.log('WIN', win);
         UI.setWin(win)
         const balance = UI.getBalance()
         UI.setBalance(balance + win)
         UI.setVisiblePlayBtn(true);
     }
-
-
-
 
 }

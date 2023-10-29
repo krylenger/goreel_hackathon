@@ -17,6 +17,7 @@ export class HeadAndTail extends Container{
         this.descriptor = descriptor;
 
         this.currentBet = null;
+        this.restartGame = null;
 
         this.bg = new SpriteBaseOriented(this, descriptor['bg']);
         this.bg.addToStage();
@@ -41,16 +42,21 @@ export class HeadAndTail extends Container{
         this.chosenCrown = new SpriteBase(this.chosenSideCont, this.descriptor['mainContainer'].chosenCrown);
         this.chosenCrown.setVisible(false);
 
+        this.exitButtonCont = new ContainerBase(this.headAndTailContainer, this.descriptor['mainContainer'].exitButtonCont);
+        this.exitButton = new ScalingButton(this.exitButtonCont, this.descriptor['mainContainer'].exitButton, () => this.close());
+        this.exitButton.setVisible(false);
+
         this.stage.addChild(this);
     }
 
-    open(){
+    open(restartGame){
         this.visible = true;
         this.alpha = 0
         gsap.to(this, {pixi: {alpha: 1}, duration: 2, onComplete:() =>{
                 UI.setVisiblePlayBtn(true);
                 UI.setPlayBtnAction(this.startGame.bind(this));
                 this.startGame();
+                this.restartGame = restartGame;
             }})
     }
 
@@ -67,6 +73,7 @@ export class HeadAndTail extends Container{
         this.chosenDiamond.setVisible(true);
         this.chosenCrown.setVisible(true);
         this.coinSpine.setVisible(false);
+        this.exitButton.setVisible(false);
     }
 
 
@@ -108,10 +115,24 @@ export class HeadAndTail extends Container{
     }
 
     setWin(win) {
+        console.log('WIN', win);
         UI.setWin(win)
         const balance = UI.getBalance()
         UI.setBalance(balance + win)
         UI.setVisiblePlayBtn(true);
+        this.exitButton.setVisible(true);
     }
 
+    close(){
+        UI.setPlayBtnEnabled(false);
+
+        gsap.to(this, {pixi: {alpha: 0}, duration: 0, onComplete: () =>{
+                UI.setVisiblePlayBtn(false)
+                UI.setPlayBtnEnabled(true)
+                UI.setPlayBtnAction(null)
+                this.alpha = 1
+                this.visible = false
+                this.restartGame()
+            }})
+    }
 }

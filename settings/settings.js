@@ -74,7 +74,28 @@ export const settings = {
                 port:{
                     x: 70,
                     y: 375
-                }
+                },
+                exitButtonCont: {
+                    name: 'exitButtonCont',
+                    land:{
+                        x: 558,
+                        y: 80
+                    },
+                    port:{
+                        x: 558,
+                        y: 40
+                    }
+                },
+                exitButton:{
+                    anchorX: 0.5,
+                    anchorY: 0.5,
+                    textureName: 'exit',
+                    height: 100,
+                    width: 100,
+                    x: 0,
+                    y: 0,
+                    scaleOver: 1.1,
+                },
             },
 
         },
@@ -167,8 +188,29 @@ export const settings = {
                 port:{
                     x: 70,
                     y: 375
+                },
+                exitButtonCont: {
+                    name: 'exitButtonCont',
+                    land:{
+                        x: 550,
+                        y: 90
+                    },
+                    port:{
+                        x: 550,
+                        y: 40
+                    }
+                },
+                exitButton:{
+                    anchorX: 0.5,
+                    anchorY: 0.5,
+                    textureName: 'exit',
+                    height: 100,
+                    width: 100,
+                    x: 0,
+                    y: 0,
+                    scaleOver: 1.1,
                 }
-            },
+            }
 
         },
         thimbles:{
@@ -189,7 +231,28 @@ export const settings = {
                 port:{
                     x: 362,
                     y: 850
+                },
+            },
+            exitButtonCont: {
+                name: 'exitButtonCont',
+                land:{
+                    x: 260,
+                    y: -390
+                },
+                port:{
+                    x: 260,
+                    y: -430
                 }
+            },
+            exitButton:{
+                anchorX: 0.5,
+                anchorY: 0.5,
+                textureName: 'exit',
+                height: 100,
+                width: 100,
+                x: 0,
+                y: 0,
+                scaleOver: 1.1,
             },
             chooseText: {
                 text: 'Please, choose a thimble!',
@@ -446,6 +509,10 @@ export const settings = {
                 "name": "sound_on",
                 "srcs": "res/textures/sound_on.png"
             },
+            {
+                "name": "exit",
+                "srcs": "res/textures/exit.png"
+            }
         ],
         spines: [
             {

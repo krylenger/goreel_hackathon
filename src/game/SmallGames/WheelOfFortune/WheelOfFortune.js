@@ -8,12 +8,15 @@ import {randomFromArr, randomMinMax} from "../../../helpers/helper";
 import UI from "../../MainGameComponents/UI";
 import {send} from "../../../sender/event-sender";
 import {ON_EVENT_WIN} from "../../../constants/events";
+import {ScalingButton} from '../../../components/ScalingButton';
 
 export class WheelOfFortune extends Container{
     constructor(stage, descriptor) {
         super()
         this.stage = stage
         this.descriptor = descriptor
+
+        this.restartGame = null;
 
         this.wins = [5, 0.5, 2, 0.1, 10, 0, 5, 0.5, 2, 0.1, 10, 0]
 
@@ -31,14 +34,20 @@ export class WheelOfFortune extends Container{
         this.light = new SpineBase(this.wheelContainer, this.descriptor['wheel'].light)
         this.light.setAnimation(0, 'light', true)
 
+        this.exitButtonCont = new ContainerBase(this.wheelContainer, this.descriptor['wheel'].exitButtonCont);
+        this.exitButton = new ScalingButton(this.exitButtonCont, this.descriptor['wheel'].exitButton, () => this.close());
+        this.exitButton.setVisible(false);
+
         this.stage.addChild(this)
 
     }
 
-    open(){
+    open(restartGame){
         UI.setPlayBtnEnabled(false)
         UI.setPlayBtnAction(this.rotate.bind(this))
         UI.setVisiblePlayBtn(true)
+        this.exitButton.setVisible(false);
+        this.restartGame = restartGame;
         this.visible = true
         this.alpha = 0
         gsap.to(this, {pixi: {alpha: 1}, duration: 2, onComplete:() =>{
@@ -56,6 +65,7 @@ export class WheelOfFortune extends Container{
                 UI.setPlayBtnAction(null)
                 this.alpha = 1
                 this.visible = false
+                this.restartGame();
             }})
 
     }
@@ -91,6 +101,7 @@ export class WheelOfFortune extends Container{
 
                                         const xWin = this.wins[index] * bet
                                         this.setWin(xWin)
+                                        this.exitButton.setVisible(true);
                                     }})
                             }})
                     }})

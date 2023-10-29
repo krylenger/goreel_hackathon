@@ -34,6 +34,8 @@ export class Game {
         this.headAndTail = new HeadAndTail(this.stage, this.descriptor.headAndTail);
         this.headAndTail.visible = false;
 
+        this._restartGame = this.restartGame.bind(this);
+
 
         UI.init(this.stage, this.descriptor['ui'])
         UI.setVisiblePlayBtn(false)
@@ -41,28 +43,31 @@ export class Game {
 
         this.winScenes = new WinScenes(stage, descriptor.winScenes)
 
+        // this.wheelOfFortune.open(this._restartGame)
+        // this.setMainGameVisibility(false)
+
 
         subscribe(ON_BONUS_GAME_START, ({detail}) => this.onBonusGameStart(detail))
 
     }
 
-
     onBonusGameStart(detail){
         switch (detail) {
             case 0:
-                this.headAndTail.open()
+                this.headAndTail.open(this._restartGame)
                 break
             case 1:
-                this.thimbles.open()
+                this.thimbles.open(this._restartGame)
                 break
             case 2:
-                this.wheelOfFortune.open()
+                this.wheelOfFortune.open(this._restartGame)
                 break
 
         }
 
         this.setMainGameVisibility(false)
     }
+
 
     createCards(){
         const cardsContainer = new ContainerBase(this.mainGameContainer, this.descriptor['main'].cards)
@@ -82,9 +87,9 @@ export class Game {
 
         if(bool){
 
-            this.mainGameContainer.alpha = 0
+            // this.mainGameContainer.alpha = 0
             this.mainGameContainer.visible = true
-            gsap.to(this.mainGameContainer, {pixi: {alpha: 1}, duration: 2})
+            // gsap.to(this.mainGameContainer, {pixi: {alpha: 1}, duration: 2})
         } else {
             gsap.to(this.mainGameContainer, {pixi: {alpha: 0}, duration: 2, onComplete: () => {
                     this.mainGameContainer.alpha = 1
@@ -92,6 +97,10 @@ export class Game {
                 }})
         }
 
+    }
+
+    restartGame() {
+        this.setMainGameVisibility(true);
     }
 
 

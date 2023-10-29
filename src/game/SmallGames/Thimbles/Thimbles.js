@@ -6,6 +6,7 @@ import {ContainerBase} from "../../../components/base-oriented/container";
 import {SpineBase} from "../../../components/base/spine-base";
 import {randomFromArr} from "../../../helpers/helper";
 import {TextBase} from "../../../components/base/text-base";
+import {ScalingButton} from '../../../components/ScalingButton';
 
 
 export class Thimbles extends Container {
@@ -14,7 +15,8 @@ export class Thimbles extends Container {
         this.stage = stage
         this.descriptor = descriptor
 
-        this.currentBet = null
+        this.currentBet = null;
+        this.restartGame = null;
 
         this.bg = new SpriteBaseOriented(this, descriptor['bg'])
         this.bg.addToStage()
@@ -27,6 +29,10 @@ export class Thimbles extends Container {
         this.chooseText = new TextBase(this.container, this.descriptor['chooseText'])
         this.chooseText.visible = false
         gsap.to(this.chooseText, {pixi: {scale: 1.2}, duration:1, repeat: -1, yoyo: true})
+
+        this.exitButtonCont = new ContainerBase(this.container, this.descriptor.exitButtonCont);
+        this.exitButton = new ScalingButton(this.exitButtonCont, this.descriptor.exitButton, () => this.close());
+        this.exitButton.setVisible(false);
 
         this.stage.addChild(this)
 
@@ -53,6 +59,7 @@ export class Thimbles extends Container {
         UI.setWin(0)
         UI.setBalance(balance - this.currentBet)
         UI.setVisiblePlayBtn(false)
+        this.exitButton.setVisible(false);
         this.thimbles.setAnimation(0, this.anims[this.ballIndex],false)
         this.thimbles.addAnimation(0, 'mixing',false, 2)
         gsap.delayedCall(5, () => {
@@ -80,6 +87,8 @@ export class Thimbles extends Container {
                     UI.setVisiblePlayBtn(true)
                     UI.setWin(0)
                 }
+                this.exitButton.setVisible(true);
+
             })
 
         })
@@ -93,12 +102,14 @@ export class Thimbles extends Container {
         UI.setVisiblePlayBtn(true)
     }
 
-    open(){
+    open(restartGame){
         UI.setPlayBtnEnabled(false)
         UI.setPlayBtnAction(this.onPlayBtn.bind(this))
         UI.setVisiblePlayBtn(true)
         this.visible = true
         this.alpha = 0
+        this.exitButton.setVisible(false);
+        this.restartGame = restartGame;
         gsap.to(this, {pixi: {alpha: 1}, duration: 2, onComplete:() =>{
                 UI.setPlayBtnEnabled(true)
             }})
@@ -114,6 +125,7 @@ export class Thimbles extends Container {
                 UI.setPlayBtnAction(null)
                 this.alpha = 1
                 this.visible = false
+                this.restartGame();
             }})
 
     }

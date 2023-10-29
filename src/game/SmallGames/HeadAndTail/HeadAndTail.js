@@ -69,8 +69,8 @@ export class HeadAndTail extends Container{
         this.diamondCoin.setVisible(true);
         this.crownCoin.setVisible(true);
         this.chooseHeader.setVisible(true);
-        this.chosenDiamond.setVisible(true);
-        this.chosenCrown.setVisible(true);
+        this.chosenDiamond.setVisible(false);
+        this.chosenCrown.setVisible(false);
         this.coinSpine.setVisible(false);
         this.exitButton.setVisible(false);
     }
@@ -103,8 +103,8 @@ export class HeadAndTail extends Container{
     };
 
     highlightChosenSide(side) {
-        side === 'diamond' && this.chosenCrown.setVisible(false);
-        side === 'crown' && this.chosenDiamond.setVisible(false);
+        side === 'diamond' && this.chosenDiamond.setVisible(true);
+        side === 'crown' && this.chosenCrown.setVisible(true);
     }
 
     calculateWin(side, flipResult) {

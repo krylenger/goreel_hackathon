@@ -1,6 +1,6 @@
 import {ContainerBase} from "../../components/base-oriented/container";
 import {SpineBase} from "../../components/base/spine-base";
-import {send, subscribe} from "../../sender/event-sender";
+import {subscribe} from "../../sender/event-sender";
 import {ON_EVENT_WIN, ON_PLAY_BTN} from "../../constants/events";
 
 export class WinScenes extends ContainerBase{
@@ -14,7 +14,7 @@ export class WinScenes extends ContainerBase{
 
             if(win >= 100 || bigWin) {
                 this.bigWin.setAnimation(0, 'big_win', false)
-            } else {
+            } else if(win > 0){
                 this.regularWin.setAnimation(0, 'animation', false)
             }
         })

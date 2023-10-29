@@ -154,7 +154,7 @@ export const settings = {
                     textureName: 'crownCoin',
                     height: 75,
                     width: 75,
-                    x: 100,
+                    x: 0,
                     y: 0,
                 },
                 chooseHeader: {

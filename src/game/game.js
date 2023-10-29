@@ -92,7 +92,6 @@ export class Game {
     }
 
     restartGame() {
-        playSound('click')
         playSound('collect')
         this.setMainGameVisibility(true);
         UI.setVisiblePlayBtn(false)

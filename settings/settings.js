@@ -28,8 +28,8 @@ export const settings = {
                     },
                 ],
                 land: {
-                    x: 430,
-                    y: 150,
+                    x: 500,
+                    y: 180,
                 },
                 port:{
                     x: 190,
@@ -373,7 +373,7 @@ export const settings = {
                 },
                 land:{
                     x: 50,
-                    y: 100,
+                    y: 130,
                 },
                 port:{
                     x: 246,
@@ -430,88 +430,25 @@ export const settings = {
     loader:{
         textures:[
             {
-                "name": "bg_land",
-                "srcs": "res/textures/bg_land.png"
+                "name": "bg",
+                "srcs": "res/textures/bg.json"
             },
             {
-                "name": "bg_port",
-                "srcs": "res/textures/bg_port.png"
-            },
-            {
-                "name": "bg_bonus_land",
-                "srcs": "res/textures/bg_bonus_land.png"
-            },
-            {
-                "name": "bg_bonus_port",
-                "srcs": "res/textures/bg_bonus_port.png"
-            },
-            {
-                "name": "bet_text",
-                "srcs": "res/textures/bet_text.png"
-            },
-            {
-                "name": "total_win_text",
-                "srcs": "res/textures/total_win_text.png"
-            },
-            {
-                "name": "arrow_down",
-                "srcs": "res/textures/down.png"
-            },
-            {
-                "name": "rectangle",
-                "srcs": "res/textures/rectangle.png"
-            },
-            {
-                "name": "arrow_up",
-                "srcs": "res/textures/up.png"
-            },
-            {
-                "name": "play_btn",
-                "srcs": "res/textures/play_btn.png"
-            },
-            {
-                "name": "heads_and_tails",
-                "srcs": "res/textures/small_games/placeholders/heads_and_tails.png"
-            },
-            {
-                "name": "thimbles",
-                "srcs": "res/textures/small_games/placeholders/thimbles.png"
-            },
-            {
-                "name": "wheel_of_fortune",
-                "srcs": "res/textures/small_games/placeholders/wheel_of_fortune.png"
+                "name": "bg_bonus",
+                "srcs": "res/textures/bg_bonus.json"
             },
             {
                 "name": "krug",
-                "srcs": "res/textures/small_games/krug.png"
+                "srcs": "res/textures/krug.png"
             },
             {
-                "name": "drum",
-                "srcs": "res/textures/small_games/inside.png"
+                "name": "small_games",
+                "srcs": "res/textures/small_games.json"
             },
+
             {
-                "name": "lamps",
-                "srcs": "res/textures/small_games/lamps.png"
-            },
-            {
-                "name": "diamondCoin",
-                "srcs": "res/textures/small_games/diamondCoin.png"
-            },
-            {
-                "name": "crownCoin",
-                "srcs": "res/textures/small_games/crownCoin.png"
-            },
-            {
-                "name": "sound_off",
-                "srcs": "res/textures/sound_off.png"
-            },
-            {
-                "name": "sound_on",
-                "srcs": "res/textures/sound_on.png"
-            },
-            {
-                "name": "exit",
-                "srcs": "res/textures/exit.png"
+                "name": "ui",
+                "srcs": "res/textures/ui.json"
             }
         ],
         spines: [

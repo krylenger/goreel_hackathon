@@ -8,14 +8,21 @@ export class WinScenes extends ContainerBase{
         super(stage, descriptor);
 
         this.bigWin = new SpineBase(this, descriptor.bigWin)
-
+        this.regularWin = new SpineBase(this, descriptor.regularWin)
 
         subscribe(ON_EVENT_WIN, ({detail: {win, bigWin}}) => {
 
-            if(win >= 100 || bigWin) this.bigWin.setAnimation(0, 'big_win', false)
+            if(win >= 100 || bigWin) {
+                this.bigWin.setAnimation(0, 'big_win', false)
+            } else if(win > 0){
+                this.regularWin.setAnimation(0, 'animation', false)
+            }
         })
 
-        subscribe(ON_PLAY_BTN, () => this.bigWin.stopAnimation(0))
+        subscribe(ON_PLAY_BTN, () => {
+            this.bigWin.stopAnimation(0)
+            this.regularWin.stopAnimation(0)
+        })
     }
 
 }

@@ -349,6 +349,9 @@ export const settings = {
             bigWin:{
                 name: 'big_win'
             },
+            regularWin:{
+                name: 'win'
+            },
             land:{
                 x: 620,
                 y: 320,
@@ -468,6 +471,10 @@ export const settings = {
             {
                 "name": "big_win",
                 "srcs": "res/spines/wins/big_win.json"
+            },
+            {
+                "name": "win",
+                "srcs": "res/spines/wins/win.json"
             }
         ],
         fonts: [

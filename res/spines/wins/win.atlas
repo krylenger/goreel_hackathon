@@ -1,0 +1,20 @@
+
+win.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+coin
+  rotate: true
+  xy: 204, 2
+  size: 100, 110
+  orig: 100, 110
+  offset: 0, 0
+  index: -1
+win
+  rotate: false
+  xy: 2, 35
+  size: 200, 67
+  orig: 200, 67
+  offset: 0, 0
+  index: -1

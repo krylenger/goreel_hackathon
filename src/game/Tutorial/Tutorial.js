@@ -1,0 +1,47 @@
+import {SpineBase} from "../../components/base/spine-base";
+import {subscribe, unSubscribe} from "../../sender/event-sender";
+import {CHANGE_ORIENTATION} from "../../constants/events";
+import {isLand} from "../../helpers/helper";
+import {initSounds, playSound} from "../../sound-engine/sound-engine";
+import gsap from "gsap/all";
+import UI from "../MainGameComponents/UI";
+
+export class Tutorial extends SpineBase{
+    constructor(stage, descriptor) {
+        super(stage, descriptor);
+
+        this.eventMode = 'static'
+        // this.cursor = 'pointer';
+
+        this._onChangeOrientation = this.onChangeOrientation.bind(this)
+        subscribe(CHANGE_ORIENTATION, this._onChangeOrientation)
+
+        this._onPointerUp = this.onPointerUp.bind(this)
+        this.on('pointerup', this._onPointerUp)
+
+        this.onChangeOrientation()
+
+        this.addToStage()
+    }
+
+    onPointerUp(){
+        this.eventMode = 'none'
+        initSounds()
+        gsap.to(this, {pixi: {alpha: 0}, duration: 1, onComplete:() => {
+                UI.onTutorialClick()
+                playSound('main')
+                this.removeFromStage()
+                this.destroy()
+            }})
+
+    }
+    onChangeOrientation(){
+        this.setAnimation(0, isLand() ? 'lend' : 'port', true)
+    }
+    destroy(options) {
+        unSubscribe(CHANGE_ORIENTATION, this._onChangeOrientation)
+        this.off('pointerup', this._onPointerUp)
+        super.destroy(options);
+    }
+
+}

@@ -18,18 +18,16 @@ PixiPlugin.registerPIXI(PIXI);
 
 const gameContainer = document.querySelector('#game')
 
-// document.documentElement.style.setProperty(keys.CSS_VAR_MAIN_BG_COLOR, settings[keys.BACKGROUND_COLOR])
-
 const app = new Application({backgroundColor: settings[keys.BACKGROUND_COLOR], antialias: true});
 
 new Resizer(app.renderer, gameContainer, true, true)
-
 const preloader = new Preloader(gameContainer)
 
 const onAssetsReady = () => {
 
-    app.stage.alpha = 0
-    gsap.to(app.stage, {alpha: 1, duration: 2, delay: 0.3,
+    gameContainer.style.opacity = 0
+
+    gsap.to(gameContainer.style, {opacity: 1, duration: 1, delay: 0.3,
         onStart:() => {
             preloader.hide()
             gameContainer.appendChild(app.view)

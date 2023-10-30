@@ -395,7 +395,7 @@ export const settings = {
                 }
             },
             soundBtn: {
-                textureName: 'sound_off',
+                textureName: 'sound_on',
                 textureNames: ['sound_off', 'sound_on'],
                 scaleOver: 1.1,
                 land:{
@@ -426,6 +426,9 @@ export const settings = {
                 scale: 0.8
             }
         },
+        tutorial:{
+            name: 'screen'
+        }
     },
     loader:{
         textures:[
@@ -478,6 +481,10 @@ export const settings = {
             {
                 "name": "win",
                 "srcs": "res/spines/wins/win.json"
+            },
+            {
+                "name": "screen",
+                "srcs": "res/spines/tutorial/screen.json"
             }
         ],
         fonts: [

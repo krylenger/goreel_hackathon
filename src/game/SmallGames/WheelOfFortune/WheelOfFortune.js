@@ -48,13 +48,13 @@ export class WheelOfFortune extends Container{
         this.exitButton.setVisible(false);
         this.visible = true
         this.alpha = 0
-        gsap.to(this, {pixi: {alpha: 1}, duration: 2, onComplete:() => UI.setPlayBtnEnabled(true)})
+        gsap.to(this, {pixi: {alpha: 1}, duration: 1, onComplete:() => UI.setPlayBtnEnabled(true)})
 
     }
 
     close(){
         this.exitButton.setVisible(false);
-        gsap.to(this, {pixi: {alpha: 0}, duration: 2, onComplete: () =>{
+        gsap.to(this, {pixi: {alpha: 0}, duration: 1, onComplete: () =>{
                 this.alpha = 1
                 this.visible = false
             }})

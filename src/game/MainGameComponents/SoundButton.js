@@ -9,8 +9,8 @@ export class SoundButton extends ScalingButton{
         super(stage, descriptor, callback);
 
         this.textures = descriptor.textureNames.map(textureName => createTexture(textureName))
-        this.soundState = false
-        this.isSoundRun = false
+        this.soundState = true
+        // this.isSoundRun = true
 
     }
     onPointerUp() {
@@ -18,10 +18,10 @@ export class SoundButton extends ScalingButton{
 
         send(ON_SET_SOUNDS_ON_OFF, this.soundState);
 
-        if(this.soundState && !this.isSoundRun){
-            playSound('main')
-            this.isSoundRun = true
-        }
+        // if(this.soundState && !this.isSoundRun){
+        //     playSound('main')
+        //     this.isSoundRun = true
+        // }
         this.texture = this.textures[+!!this.soundState]
         super.onPointerUp();
     }

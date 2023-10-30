@@ -15,11 +15,10 @@ subscribe(ON_SET_SOUNDS_ON_OFF, ({detail: allow}) => onSetSoundsOnOff(allow));
 
 const onSetSoundsOnOff = allow => {
     isAllowed = allow;
-    if(allow && !isInited) init()
     Howler.mute(!allow)
 }
 
-const init = () => {
+const initSounds = () => {
     sound = new Howl(soundJson)
     isInited = true
 };
@@ -36,4 +35,4 @@ const stopSound = soundName => {
     }
 }
 
-export {playSound, stopSound};
+export {playSound, stopSound, initSounds};

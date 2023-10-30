@@ -53,7 +53,7 @@ export class HeadAndTail extends Container{
     open(){
         this.visible = true;
         this.alpha = 0
-        gsap.to(this, {pixi: {alpha: 1}, duration: 2, onComplete:() =>{
+        gsap.to(this, {pixi: {alpha: 1}, duration: 1, onComplete:() =>{
                 UI.setVisiblePlayBtn(true);
                 UI.setPlayBtnAction(this.startGame.bind(this));
             }})
@@ -124,7 +124,7 @@ export class HeadAndTail extends Container{
 
     close(){
         this.exitButton.setVisible(false);
-        gsap.to(this, {pixi: {alpha: 0}, duration: 2, onComplete: () =>{
+        gsap.to(this, {pixi: {alpha: 0}, duration: 1, onComplete: () =>{
                 this.alpha = 1
                 this.visible = false
                 this.coinSpine.setVisible(false);

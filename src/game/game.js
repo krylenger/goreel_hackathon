@@ -9,6 +9,7 @@ import {WheelOfFortune} from "./SmallGames/WheelOfFortune/WheelOfFortune";
 import {HeadAndTail} from './SmallGames/HeadAndTail/HeadAndTail';
 import {Thimbles} from "./SmallGames/Thimbles/Thimbles";
 import {WinScenes} from "./WinScenes/WinScenes";
+import {Tutorial} from "./Tutorial/Tutorial";
 import {send, subscribe} from "../sender/event-sender";
 import {playSound} from "../sound-engine/sound-engine";
 
@@ -42,6 +43,9 @@ export class Game {
 
         subscribe(ON_BONUS_GAME_CLOSE, () => this.restartGame())
         subscribe(ON_BONUS_GAME_START, ({detail}) => this.onBonusGameStart(detail))
+
+
+        this.tutorial = new Tutorial(this.mainGameContainer, this.descriptor.tutorial)
 
     }
 
@@ -81,9 +85,10 @@ export class Game {
         if(bool){
             this.mainGameContainer.visible = true
         } else {
-            gsap.to(this.mainGameContainer, {pixi: {alpha: 0}, duration: 2, onComplete: () => {
+            gsap.to(this.mainGameContainer, {pixi: {alpha: 0}, duration: 1, onComplete: () => {
                     this.mainGameContainer.alpha = 1
                     this.mainGameContainer.visible = false
+                    send(SET_CARDS_INTERACTIVE, true)
                 }})
         }
 
@@ -94,6 +99,5 @@ export class Game {
         this.setMainGameVisibility(true);
         UI.setVisiblePlayBtn(false)
         UI.setPlayBtnAction(null)
-        gsap.delayedCall(2, () => send(SET_CARDS_INTERACTIVE, true))
     }
 }

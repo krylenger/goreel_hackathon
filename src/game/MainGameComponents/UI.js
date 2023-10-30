@@ -25,8 +25,15 @@ class UI {
 
         this.soundButtonContainer = new ContainerBase(this.stage, this.descriptor['soundBtn'])
         this.sounButton = new SoundButton(this.soundButtonContainer, this.descriptor['soundBtn'])
+        this.sounButton.visible = false
+
 
         this.init = null
+    }
+
+    onTutorialClick(){
+        this.sounButton.visible = true
+        this.winTextContainer.visible = true
     }
 
     setPlayBtnEnabled(bool){
@@ -51,12 +58,15 @@ class UI {
         const balanceTextContainer = new ContainerBase(this.stage, this.descriptor['balance'])
         this.balanceStaticText = new TextBase(balanceTextContainer, this.descriptor['balance']['staticText'])
         this.balanceDynamicText = new TextBase(balanceTextContainer, this.descriptor['balance']['dynamicText'])
+
+        window.setBalance = this.setBalance.bind(this) // for cheating
     }
 
     createWin(){
-        const winTextContainer = new ContainerBase(this.stage, this.descriptor['win'])
-        this.winStaticText = new SpriteBase(winTextContainer, this.descriptor['win']['staticText'])
-        this.winDynamicText = new TextBase(winTextContainer, this.descriptor['win']['dynamicText'])
+        this.winTextContainer = new ContainerBase(this.stage, this.descriptor['win'])
+        this.winStaticText = new SpriteBase(this.winTextContainer, this.descriptor['win']['staticText'])
+        this.winDynamicText = new TextBase(this.winTextContainer, this.descriptor['win']['dynamicText'])
+        this.winTextContainer.visible = false
     }
     createBet(){
         this.betTextContainer = new ContainerBase(this.stage, this.descriptor['bet'])

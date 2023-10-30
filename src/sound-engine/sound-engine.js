@@ -6,17 +6,14 @@ import soundJson from  '../../res/sound/soundsprite.json'
 
 let sound = null;
 let isInited = false
-let isAllowed = false
+
 const soundIds = {};
 
-window.addEventListener('blur', ()=> isAllowed && Howler.mute(true))
-window.addEventListener('focus', ()=> isAllowed && Howler.mute(false))
+window.addEventListener('blur', ()=> isInited && Howler.mute(true))
+window.addEventListener('focus', ()=> isInited && Howler.mute(false))
 subscribe(ON_SET_SOUNDS_ON_OFF, ({detail: allow}) => onSetSoundsOnOff(allow));
 
-const onSetSoundsOnOff = allow => {
-    isAllowed = allow;
-    Howler.mute(!allow)
-}
+const onSetSoundsOnOff = allow => Howler.mute(!allow);
 
 const initSounds = () => {
     sound = new Howl(soundJson)

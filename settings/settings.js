@@ -87,17 +87,10 @@ export const settings = {
                     }
                 },
                 exitButton:{
-                    anchorX: 0.5,
-                    anchorY: 0.5,
                     textureName: 'exit',
-                    height: 100,
-                    width: 100,
-                    x: 0,
-                    y: 0,
                     scaleOver: 1.1,
                 },
             },
-
         },
         headAndTail:{
             bg:{
@@ -201,13 +194,7 @@ export const settings = {
                     }
                 },
                 exitButton:{
-                    anchorX: 0.5,
-                    anchorY: 0.5,
                     textureName: 'exit',
-                    height: 100,
-                    width: 100,
-                    x: 0,
-                    y: 0,
                     scaleOver: 1.1,
                 }
             }
@@ -245,13 +232,7 @@ export const settings = {
                 }
             },
             exitButton:{
-                anchorX: 0.5,
-                anchorY: 0.5,
                 textureName: 'exit',
-                height: 100,
-                width: 100,
-                x: 0,
-                y: 0,
                 scaleOver: 1.1,
             },
             chooseText: {

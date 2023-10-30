@@ -27,9 +27,9 @@ export class Tutorial extends SpineBase{
     onPointerUp(){
         this.eventMode = 'none'
         initSounds()
+        UI.onTutorialClick()
+        playSound('main')
         gsap.to(this, {pixi: {alpha: 0}, duration: 1, onComplete:() => {
-                UI.onTutorialClick()
-                playSound('main')
                 this.removeFromStage()
                 this.destroy()
             }})

@@ -11,25 +11,27 @@ export class WinScenes extends ContainerBase{
         this.bigWin = new SpineBase(this, descriptor.bigWin)
         this.regularWin = new SpineBase(this, descriptor.regularWin)
 
-        subscribe(ON_EVENT_WIN, ({detail: {win, bigWin}}) => {
+        subscribe(ON_EVENT_WIN, ({detail: {win, bigWin}}) => this.onWin(win, bigWin))
+        subscribe(ON_PLAY_BTN, () => this.onPlayBtnPress())
+    }
 
-            if(win >= 100 || bigWin) {
-                this.bigWin.setAnimation(0, 'big_win', false)
-                playSound('big_win')
-            } else if(win > 0){
-                this.regularWin.setAnimation(0, 'win', false)
-                playSound('collect')
-                playSound('bonus_win')
-            }
-        })
+    onWin(win, bigWin){
+        if(win >= 100 || bigWin) {
+            this.bigWin.setAnimation(0, 'big_win', false)
+            playSound('big_win')
+        } else if(win > 0){
+            this.regularWin.setAnimation(0, 'win', false)
+            playSound('collect')
+            playSound('bonus_win')
+        }
+    }
 
-        subscribe(ON_PLAY_BTN, () => {
-            this.bigWin.stopAnimation(0)
-            this.regularWin.stopAnimation(0)
-            stopSound('big_win')
-            stopSound('collect')
-            stopSound('bonus_win')
-        })
+    onPlayBtnPress(){
+        this.bigWin.stopAnimation(0)
+        this.regularWin.stopAnimation(0)
+        stopSound('big_win')
+        stopSound('collect')
+        stopSound('bonus_win')
     }
 
 }

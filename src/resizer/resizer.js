@@ -1,4 +1,3 @@
-
 import * as sender from "../sender/event-sender";
 import * as events from "../constants/events";
 import * as baseEvents from "../constants/base-events";
@@ -20,7 +19,6 @@ export class Resizer {
         this.changeOrientationFlag = null
 
         addEventListener(baseEvents.RESIZE, this.update.bind(this));
-
         addEventListener(baseEvents.BEFORE_UNLOAD, this.onBeforeUnLoad.bind(this));
 
         this.init()
@@ -30,9 +28,7 @@ export class Resizer {
     init(){
 
         if(this.fullScreenMode) document.body.addEventListener(baseEvents.TOUCH_END, this.onScreenFull.bind(this));
-
         if(this.noSleepMode) this.noSleepEnable();
-
         this.update()
 
     }
@@ -40,7 +36,6 @@ export class Resizer {
     update() {
 
         this.onUpdateOrientation()
-
         this.onScale()
     }
 
@@ -77,23 +72,17 @@ export class Resizer {
     }
 
     onScreenFull(){
-
         if (screenfull.isEnabled && !screenfull.isFullscreen) {
-
             screenfull.request(document.body).then(this.update.bind(this))
-
         }
     }
 
     noSleepEnable(){
-
         const noSleep = new NoSleep()
-
         document.addEventListener(baseEvents.POINTER_UP, function enableNoSleep() {
             document.removeEventListener(baseEvents.POINTER_UP, enableNoSleep, false);
             noSleep.enable();
         }, false);
-
     }
 
 }

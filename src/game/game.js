@@ -10,11 +10,9 @@ import {HeadAndTail} from './SmallGames/HeadAndTail/HeadAndTail';
 import {Thimbles} from "./SmallGames/Thimbles/Thimbles";
 import {WinScenes} from "./WinScenes/WinScenes";
 import {Tutorial} from "./Tutorial/Tutorial";
+import {ScalingText} from "../components/ScalingText";
 import {send, subscribe} from "../sender/event-sender";
 import {playSound} from "../sound-engine/sound-engine";
-import {TextBase} from "../components/base/text-base";
-import {ScalingText} from "../components/ScalingText";
-
 
 export class Game {
     constructor(stage, descriptor) {

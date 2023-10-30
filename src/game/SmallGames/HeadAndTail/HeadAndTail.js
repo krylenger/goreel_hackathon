@@ -6,11 +6,11 @@ import {SpriteBaseOriented} from '../../../components/base-oriented/sprite-base-
 import {ContainerBase} from '../../../components/base-oriented/container';
 import {SpineBase} from "../../../components/base/spine-base";
 import {SpriteBase} from '../../../components/base/sprite-base';
-import {TextBase} from '../../../components/base/text-base';
 import {ScalingButton} from '../../../components/ScalingButton';
 import {randomFromArr} from '../../../helpers/helper';
 import {send} from "../../../sender/event-sender";
 import {playSound, stopSound} from "../../../sound-engine/sound-engine";
+import {ScalingText} from "../../../components/ScalingText";
 
 export class HeadAndTail extends Container{
     constructor(stage, descriptor) {
@@ -30,10 +30,8 @@ export class HeadAndTail extends Container{
         this.crownCoin = new ScalingButton(this.headAndTailContainer, this.descriptor['mainContainer'].crownCoin, () => this.flipCoin('crown'));
         this.crownCoin.setVisible(false);
 
-        this.chooseHeader = new TextBase(this.headAndTailContainer, this.descriptor['mainContainer'].chooseHeader);
+        this.chooseHeader = new ScalingText(this.headAndTailContainer, this.descriptor['mainContainer'].chooseHeader);
         this.chooseHeader.setVisible(false);
-
-        gsap.to(this.chooseHeader, {pixi: {scale: 1.1}, duration:0.5, repeat: -1, yoyo: true})
 
         this.coinSpineCont = new ContainerBase(this.headAndTailContainer, this.descriptor['mainContainer'].coinSpine)
         this.coinSpine = new SpineBase(this.coinSpineCont, this.descriptor['mainContainer'].coinSpine);

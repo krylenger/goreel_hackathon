@@ -1,6 +1,6 @@
 import {Container} from "pixi.js";
 import {SpriteBaseOriented} from "../../../components/base-oriented/sprite-base-oriented";
-import {TextBase} from "../../../components/base/text-base";
+import {ScalingText} from "../../../components/ScalingText";
 import {ScalingButton} from '../../../components/ScalingButton';
 import {ContainerBase} from "../../../components/base-oriented/container";
 import {SpineBase} from "../../../components/base/spine-base";
@@ -10,8 +10,6 @@ import {playSound} from "../../../sound-engine/sound-engine";
 import {ON_BONUS_GAME_CLOSE} from "../../../constants/events";
 import UI from "../../MainGameComponents/UI";
 import gsap from "gsap/all";
-
-
 
 export class Thimbles extends Container {
     constructor(stage, descriptor) {
@@ -27,9 +25,8 @@ export class Thimbles extends Container {
         this.container = new ContainerBase(this, this.descriptor['thimblesSpine'])
         this.thimbles = new SpineBase(this.container, this.descriptor['thimblesSpine'])
 
-        this.chooseText = new TextBase(this.container, this.descriptor['chooseText'])
+        this.chooseText = new ScalingText(this.container, this.descriptor['chooseText'])
         this.chooseText.visible = false
-        gsap.to(this.chooseText, {pixi: {scale: 1.2}, duration:1, repeat: -1, yoyo: true})
 
         this.exitButtonCont = new ContainerBase(this.container, this.descriptor.exitButtonCont);
         this.exitButton = new ScalingButton(this.exitButtonCont, this.descriptor.exitButton, () => this.close());
@@ -49,7 +46,6 @@ export class Thimbles extends Container {
             sprite.on('pointerup',() => this.onCapPointerUp(name))
             return sprite
         })
-
 
     }
     onPlayBtn(){

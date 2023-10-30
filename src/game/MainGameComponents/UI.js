@@ -6,6 +6,7 @@ import {SoundButton} from "./SoundButton";
 import {ON_EVENT_WIN, ON_PLAY_BTN} from "../../constants/events";
 import {send} from "../../sender/event-sender";
 import {playSound} from "../../sound-engine/sound-engine";
+import {SpriteBaseOriented} from "../../components/base-oriented/sprite-base-oriented";
 
 class UI {
     init(stage, descriptor){
@@ -72,7 +73,8 @@ class UI {
         this.betTextContainer = new ContainerBase(this.stage, this.descriptor['bet'])
 
         this.betRectangle = new SpriteBase(this.betTextContainer,  this.descriptor['bet']['rectangle'])
-        this.betStaticText = new SpriteBase(this.betTextContainer, this.descriptor['bet']['staticText'])
+        this.betStaticText = new SpriteBaseOriented(this.betTextContainer, this.descriptor['bet']['staticText'])
+        this.betStaticText.addToStage()
         this.betDynamicText = new TextBase(this.betTextContainer, this.descriptor['bet']['dynamicText'])
         this.upClickArea = new ScalingButton(this.betTextContainer, this.descriptor['bet']['upClickArea'], this.onUpClickArea.bind(this))
         this.downClickArea = new ScalingButton(this.betTextContainer, this.descriptor['bet']['downClickArea'], this.onDownClickArea.bind(this))

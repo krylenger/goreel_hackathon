@@ -13,6 +13,7 @@ import {Tutorial} from "./Tutorial/Tutorial";
 import {send, subscribe} from "../sender/event-sender";
 import {playSound} from "../sound-engine/sound-engine";
 import {TextBase} from "../components/base/text-base";
+import {ScalingText} from "../components/ScalingText";
 
 
 export class Game {
@@ -28,9 +29,7 @@ export class Game {
 
         this.cardsContainer = this.createCards()
 
-        this.chooseText = new TextBase(this.cardsContainer, this.descriptor['main']['chooseText'])
-
-        gsap.to(this.chooseText, {pixi: {scale: 1.1}, duration:0.5, repeat: -1, yoyo: true})
+        this.chooseText = new ScalingText(this.cardsContainer, this.descriptor['main']['chooseText'])
 
         this.wheelOfFortune = new WheelOfFortune(this.stage, this.descriptor.wheelOfFortune)
         this.wheelOfFortune.visible = false
@@ -48,7 +47,6 @@ export class Game {
 
         subscribe(ON_BONUS_GAME_CLOSE, () => this.restartGame())
         subscribe(ON_BONUS_GAME_START, ({detail}) => this.onBonusGameStart(detail))
-
 
         this.tutorial = new Tutorial(this.mainGameContainer, this.descriptor.tutorial)
 

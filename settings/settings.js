@@ -37,7 +37,7 @@ export const settings = {
                 },
             },
             chooseText: {
-                text: 'Please, choose a card, for play game!',
+                text: 'Please select a card to play the game',
                 style:{
                     "fontFamily":'Franklin',
                     "fontSize": "28px",
@@ -47,8 +47,8 @@ export const settings = {
                 },
                 anchorX: 0.5,
                 anchorY: 0.5,
-                x: 170,
-                y: -120
+                x: 172,
+                y: 464
             }
         },
         wheelOfFortune:{
@@ -271,7 +271,7 @@ export const settings = {
                     text: 'Balance:',
                     style:{
                         "fontFamily":'Franklin',
-                        "fontSize": "30px",
+                        "fontSize": "34px",
                         "fill": ['#d0d0d0'],
                     },
                     anchorY: 0.5,
@@ -283,16 +283,16 @@ export const settings = {
                     postfix: '$',
                     style:{
                         "fontFamily":'Franklin',
-                        "fontSize": "30px",
+                        "fontSize": "34px",
                         "fill": ['#d0d0d0'],
                     },
                     anchorY: 0.5,
-                    x: 120,
+                    x: 130,
                     y: 0
                 },
                 land:{
-                    x: 45,
-                    y: 600,
+                    x: 30,
+                    y: 594,
                 },
                 port:{
                     x: 50,
@@ -303,9 +303,16 @@ export const settings = {
                 values: [0.5, 1, 2, 5, 10, 20, 50, 100],
                 defaultValuesIndex: 2,
                 staticText:{
-                    textureName: 'bet_text',
-                    x: 0,
-                    y: 0
+                    land:{
+                        x: 150,
+                        y: -120,
+                        textureName: 'bet_text',
+                    },
+                    port:{
+                        x: 0,
+                        y: 0,
+                        textureName: 'bet_text',
+                    }
                 },
                 rectangle: {
                     x: 140,
@@ -341,8 +348,8 @@ export const settings = {
                     scale: 0.7
                 },
                 land:{
-                    x: 970,
-                    y: 200,
+                    x: 910,
+                    y: 260,
                 },
                 port:{
                     x: 50,
@@ -383,7 +390,7 @@ export const settings = {
                 },
                 land:{
                     x: 1120,
-                    y: 500,
+                    y: 590,
                 },
                 port:{
                     x: 524,
@@ -395,12 +402,12 @@ export const settings = {
                 textureNames: ['sound_off', 'sound_on'],
                 scaleOver: 1.1,
                 land:{
-                    x: 70,
-                    y: 64,
+                    x: 76,
+                    y: 70,
                 },
                 port:{
-                    x: 70,
-                    y: 70,
+                    x: 74,
+                    y: 74,
                 }
             }
         },

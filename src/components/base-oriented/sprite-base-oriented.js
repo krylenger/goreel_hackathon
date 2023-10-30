@@ -25,7 +25,6 @@ export class SpriteBaseOriented extends Sprite{
         this.stage = stage;
 
         this._changeOrientationFunc = this.onOrientationChange.bind(this);
-
         sender.subscribe(events.CHANGE_ORIENTATION, this._changeOrientationFunc);
 
         this.setNewDescriptor(descriptor)
@@ -67,72 +66,50 @@ export class SpriteBaseOriented extends Sprite{
         if(isExist(descriptor[keys.ANCHOR_X])) {
             this.anchor.x = descriptor[keys.ANCHOR_X];
         }
-
         if(isExist(descriptor[keys.ANCHOR_Y])) {
             this.anchor.y = descriptor[keys.ANCHOR_Y];
         }
-
         this.onOrientationChange();
     }
 
     destroy(params) {
         sender.unSubscribe(events.CHANGE_ORIENTATION, this._changeOrientationFunc);
-
         this.removeFromStage();
         super.destroy(params);
-
     }
 
     removeFromStage() {
-
         this.stage.removeChild(this.sprite)
-
     }
 
     addToStage() {
-
         this.stage.addChild(this)
-
     }
 
     setAlpha(alpha) {
-
         this.alpha = alpha;
-
     }
 
     setVisible(visible) {
-
         this.visible = visible;
-
     }
 
 
     setOrientation(texture, x, y, width, height) {
-
         if(isExist(texture)) {
-
             this.texture = texture;
-
             this.position.set(x, y)
-
             if(isExist(width)) this.width = width;
-
             if(isExist(height)) this.height = height;
-
         }
     }
 
     onOrientationChange() {
 
         if(isLand()) {
-
             this.setOrientation(this.landTexture, this.landX, this.landY, this.landWidth, this.landHeight);
-
         } else {
-
             this.setOrientation(this.portTexture, this.portX, this.portY, this.portWidth, this.portHeight);
-
         }
 
     }

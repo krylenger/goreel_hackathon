@@ -2,13 +2,14 @@ import {Container} from "pixi.js";
 import {SpriteBaseOriented} from "../../../components/base-oriented/sprite-base-oriented";
 import {SpriteBase} from "../../../components/base/sprite-base";
 import {ContainerBase} from "../../../components/base-oriented/container";
-import gsap from 'gsap/all'
+import {ScalingButton} from '../../../components/ScalingButton';
 import {SpineBase} from "../../../components/base/spine-base";
+import {playSound, stopSound} from "../../../sound-engine/sound-engine";
 import {randomFromArr, randomMinMax} from "../../../helpers/helper";
-import UI from "../../MainGameComponents/UI";
 import {send} from "../../../sender/event-sender";
 import {ON_BONUS_GAME_CLOSE} from "../../../constants/events";
-import {ScalingButton} from '../../../components/ScalingButton';
+import UI from "../../MainGameComponents/UI";
+import gsap from 'gsap/all'
 
 export class WheelOfFortune extends Container{
     constructor(stage, descriptor) {
@@ -47,15 +48,13 @@ export class WheelOfFortune extends Container{
         this.exitButton.setVisible(false);
         this.visible = true
         this.alpha = 0
-        gsap.to(this, {pixi: {alpha: 1}, duration: 2, onComplete:() =>{
-                UI.setPlayBtnEnabled(true)
-            }})
+        gsap.to(this, {pixi: {alpha: 1}, duration: 1, onComplete:() => UI.setPlayBtnEnabled(true)})
 
     }
 
     close(){
         this.exitButton.setVisible(false);
-        gsap.to(this, {pixi: {alpha: 0}, duration: 2, onComplete: () =>{
+        gsap.to(this, {pixi: {alpha: 0}, duration: 1, onComplete: () =>{
                 this.alpha = 1
                 this.visible = false
             }})
@@ -64,17 +63,19 @@ export class WheelOfFortune extends Container{
     }
 
     rotate(){
+        playSound('reel_stop')
+        playSound('mix')
+
         UI.setVisiblePlayBtn(false)
         this.exitButton.setVisible(false);
         const balance = UI.getBalance()
         const bet = UI.getBet()
         UI.setWin(0)
         UI.setBalance(balance - bet)
+        this.exitButton.setVisible(false);
 
         const pos = randomFromArr([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
-
-        const repeat = randomFromArr([0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 2, 2])
-
+        const repeat = randomFromArr([0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2])
         const xTime = randomMinMax(5, repeat === 3 ? 7 : 12)/10
 
         gsap.to(this.drum, {
@@ -96,6 +97,9 @@ export class WheelOfFortune extends Container{
                                         const xWin = this.wins[index] * bet
                                         this.setWin(xWin, hasJackpot)
                                         this.exitButton.setVisible(true);
+
+                                        stopSound('mix')
+                                        playSound('stop_fx')
                                     }})
                             }})
                     }})

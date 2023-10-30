@@ -1,7 +1,8 @@
 import {ContainerBase} from "../../components/base-oriented/container";
 import {SpineBase} from "../../components/base/spine-base";
-import {subscribe} from "../../sender/event-sender";
 import {ON_EVENT_WIN, ON_PLAY_BTN} from "../../constants/events";
+import {subscribe} from "../../sender/event-sender";
+import {playSound, stopSound} from "../../sound-engine/sound-engine";
 
 export class WinScenes extends ContainerBase{
     constructor(stage, descriptor) {
@@ -14,14 +15,20 @@ export class WinScenes extends ContainerBase{
 
             if(win >= 100 || bigWin) {
                 this.bigWin.setAnimation(0, 'big_win', false)
+                playSound('big_win')
             } else if(win > 0){
-                this.regularWin.setAnimation(0, 'animation', false)
+                this.regularWin.setAnimation(0, 'win', false)
+                playSound('collect')
+                playSound('bonus_win')
             }
         })
 
         subscribe(ON_PLAY_BTN, () => {
             this.bigWin.stopAnimation(0)
             this.regularWin.stopAnimation(0)
+            stopSound('big_win')
+            stopSound('collect')
+            stopSound('bonus_win')
         })
     }
 

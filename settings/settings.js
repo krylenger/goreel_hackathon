@@ -28,13 +28,27 @@ export const settings = {
                     },
                 ],
                 land: {
-                    x: 430,
-                    y: 150,
+                    x: 500,
+                    y: 180,
                 },
                 port:{
                     x: 190,
                     y: 410,
                 },
+            },
+            chooseText: {
+                text: 'Please, choose a card, for play game!',
+                style:{
+                    "fontFamily":'Franklin',
+                    "fontSize": "28px",
+                    "fontWeight": 'normal',
+                    "fill": ['#ffffff'],
+                    align: 'center'
+                },
+                anchorX: 0.5,
+                anchorY: 0.5,
+                x: 170,
+                y: -120
             }
         },
         wheelOfFortune:{
@@ -87,17 +101,10 @@ export const settings = {
                     }
                 },
                 exitButton:{
-                    anchorX: 0.5,
-                    anchorY: 0.5,
                     textureName: 'exit',
-                    height: 100,
-                    width: 100,
-                    x: 0,
-                    y: 0,
                     scaleOver: 1.1,
                 },
             },
-
         },
         headAndTail:{
             bg:{
@@ -158,16 +165,17 @@ export const settings = {
                     y: 0,
                 },
                 chooseHeader: {
-                    text: 'Please choose: \nDiamond or Crown.',
+                    text: 'Please choose Diamond or Crown.',
                     style:{
                         "fontFamily":'Franklin',
-                        "fontSize": "42px",
-                        "fontWeight": 'bold',
-                        "align": 'center',
-                        "fill": ['#e4ac19','#f3e047', '#e4ac19'],
+                        "fontSize": "28px",
+                        "fontWeight": 'normal',
+                        "fill": ['#ffffff'],
+                        align: 'center'
                     },
+                    anchorX: 0.5,
                     anchorY: 0.5,
-                    x: 120,
+                    x: 304,
                     y: 480
                 },
                 coinSpine: {
@@ -201,13 +209,7 @@ export const settings = {
                     }
                 },
                 exitButton:{
-                    anchorX: 0.5,
-                    anchorY: 0.5,
                     textureName: 'exit',
-                    height: 100,
-                    width: 100,
-                    x: 0,
-                    y: 0,
                     scaleOver: 1.1,
                 }
             }
@@ -245,13 +247,7 @@ export const settings = {
                 }
             },
             exitButton:{
-                anchorX: 0.5,
-                anchorY: 0.5,
                 textureName: 'exit',
-                height: 100,
-                width: 100,
-                x: 0,
-                y: 0,
                 scaleOver: 1.1,
             },
             chooseText: {
@@ -373,7 +369,7 @@ export const settings = {
                 },
                 land:{
                     x: 50,
-                    y: 100,
+                    y: 130,
                 },
                 port:{
                     x: 246,
@@ -395,7 +391,7 @@ export const settings = {
                 }
             },
             soundBtn: {
-                textureName: 'sound_off',
+                textureName: 'sound_on',
                 textureNames: ['sound_off', 'sound_on'],
                 scaleOver: 1.1,
                 land:{
@@ -416,102 +412,41 @@ export const settings = {
                 name: 'win'
             },
             land:{
-                x: 620,
+                x: 650,
                 y: 320,
                 scale: 1
             },
             port:{
-                x: 350,
+                x: 360,
                 y: 600,
                 scale: 0.8
             }
         },
+        tutorial:{
+            name: 'screen'
+        }
     },
     loader:{
         textures:[
             {
-                "name": "bg_land",
-                "srcs": "res/textures/bg_land.png"
+                "name": "bg",
+                "srcs": "res/textures/bg.json"
             },
             {
-                "name": "bg_port",
-                "srcs": "res/textures/bg_port.png"
-            },
-            {
-                "name": "bg_bonus_land",
-                "srcs": "res/textures/bg_bonus_land.png"
-            },
-            {
-                "name": "bg_bonus_port",
-                "srcs": "res/textures/bg_bonus_port.png"
-            },
-            {
-                "name": "bet_text",
-                "srcs": "res/textures/bet_text.png"
-            },
-            {
-                "name": "total_win_text",
-                "srcs": "res/textures/total_win_text.png"
-            },
-            {
-                "name": "arrow_down",
-                "srcs": "res/textures/down.png"
-            },
-            {
-                "name": "rectangle",
-                "srcs": "res/textures/rectangle.png"
-            },
-            {
-                "name": "arrow_up",
-                "srcs": "res/textures/up.png"
-            },
-            {
-                "name": "play_btn",
-                "srcs": "res/textures/play_btn.png"
-            },
-            {
-                "name": "heads_and_tails",
-                "srcs": "res/textures/small_games/placeholders/heads_and_tails.png"
-            },
-            {
-                "name": "thimbles",
-                "srcs": "res/textures/small_games/placeholders/thimbles.png"
-            },
-            {
-                "name": "wheel_of_fortune",
-                "srcs": "res/textures/small_games/placeholders/wheel_of_fortune.png"
+                "name": "bg_bonus",
+                "srcs": "res/textures/bg_bonus.json"
             },
             {
                 "name": "krug",
-                "srcs": "res/textures/small_games/krug.png"
+                "srcs": "res/textures/krug.png"
             },
             {
-                "name": "drum",
-                "srcs": "res/textures/small_games/inside.png"
+                "name": "small_games",
+                "srcs": "res/textures/small_games.json"
             },
             {
-                "name": "lamps",
-                "srcs": "res/textures/small_games/lamps.png"
-            },
-            {
-                "name": "diamondCoin",
-                "srcs": "res/textures/small_games/diamondCoin.png"
-            },
-            {
-                "name": "crownCoin",
-                "srcs": "res/textures/small_games/crownCoin.png"
-            },
-            {
-                "name": "sound_off",
-                "srcs": "res/textures/sound_off.png"
-            },
-            {
-                "name": "sound_on",
-                "srcs": "res/textures/sound_on.png"
-            },
-            {
-                "name": "exit",
-                "srcs": "res/textures/exit.png"
+                "name": "ui",
+                "srcs": "res/textures/ui.json"
             }
         ],
         spines: [
@@ -542,6 +477,10 @@ export const settings = {
             {
                 "name": "win",
                 "srcs": "res/spines/wins/win.json"
+            },
+            {
+                "name": "screen",
+                "srcs": "res/spines/tutorial/screen.json"
             }
         ],
         fonts: [
@@ -549,7 +488,6 @@ export const settings = {
                 "name": "Franklin",
                 "srcs": "res/fonts/franklin.woff",
             },
-
         ],
     }
 }

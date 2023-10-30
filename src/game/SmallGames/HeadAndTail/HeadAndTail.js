@@ -1,5 +1,6 @@
 import UI from "../../MainGameComponents/UI";
 import gsap from 'gsap/all';
+import {ON_BONUS_GAME_CLOSE} from "../../../constants/events";
 import {Container} from "pixi.js";
 import {SpriteBaseOriented} from '../../../components/base-oriented/sprite-base-oriented';
 import {ContainerBase} from '../../../components/base-oriented/container';
@@ -8,9 +9,8 @@ import {SpriteBase} from '../../../components/base/sprite-base';
 import {TextBase} from '../../../components/base/text-base';
 import {ScalingButton} from '../../../components/ScalingButton';
 import {randomFromArr} from '../../../helpers/helper';
-import {ON_BONUS_GAME_CLOSE} from "../../../constants/events";
 import {send} from "../../../sender/event-sender";
-
+import {playSound, stopSound} from "../../../sound-engine/sound-engine";
 
 export class HeadAndTail extends Container{
     constructor(stage, descriptor) {
@@ -33,6 +33,8 @@ export class HeadAndTail extends Container{
         this.chooseHeader = new TextBase(this.headAndTailContainer, this.descriptor['mainContainer'].chooseHeader);
         this.chooseHeader.setVisible(false);
 
+        gsap.to(this.chooseHeader, {pixi: {scale: 1.1}, duration:0.5, repeat: -1, yoyo: true})
+
         this.coinSpineCont = new ContainerBase(this.headAndTailContainer, this.descriptor['mainContainer'].coinSpine)
         this.coinSpine = new SpineBase(this.coinSpineCont, this.descriptor['mainContainer'].coinSpine);
         this.coinSpine.setVisible(false);
@@ -53,7 +55,7 @@ export class HeadAndTail extends Container{
     open(){
         this.visible = true;
         this.alpha = 0
-        gsap.to(this, {pixi: {alpha: 1}, duration: 2, onComplete:() =>{
+        gsap.to(this, {pixi: {alpha: 1}, duration: 1, onComplete:() =>{
                 UI.setVisiblePlayBtn(true);
                 UI.setPlayBtnAction(this.startGame.bind(this));
             }})
@@ -77,7 +79,9 @@ export class HeadAndTail extends Container{
 
     flipCoin(side) {
         if (!side) return;
-
+        playSound('click')
+        playSound('sack_mix')
+        gsap.delayedCall(2.3, ()=> stopSound('sack_mix'))
         const flipResult = randomFromArr([0, 1]);
         const win = this.calculateWin(side, flipResult);
 
@@ -122,9 +126,12 @@ export class HeadAndTail extends Container{
 
     close(){
         this.exitButton.setVisible(false);
-        gsap.to(this, {pixi: {alpha: 0}, duration: 2, onComplete: () =>{
+        gsap.to(this, {pixi: {alpha: 0}, duration: 1, onComplete: () =>{
                 this.alpha = 1
                 this.visible = false
+                this.coinSpine.setVisible(false);
+                this.chosenDiamond.setVisible(false);
+                this.chosenCrown.setVisible(false);
             }})
         send(ON_BONUS_GAME_CLOSE)
 

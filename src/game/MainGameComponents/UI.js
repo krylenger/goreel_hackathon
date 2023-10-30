@@ -2,9 +2,10 @@ import {TextBase} from "../../components/base/text-base";
 import {ContainerBase} from "../../components/base-oriented/container";
 import {ScalingButton} from "../../components/ScalingButton";
 import {SpriteBase} from "../../components/base/sprite-base";
-import {send} from "../../sender/event-sender";
-import {ON_EVENT_WIN, ON_PLAY_BTN} from "../../constants/events";
 import {SoundButton} from "./SoundButton";
+import {ON_EVENT_WIN, ON_PLAY_BTN} from "../../constants/events";
+import {send} from "../../sender/event-sender";
+import {playSound} from "../../sound-engine/sound-engine";
 
 class UI {
     init(stage, descriptor){
@@ -22,13 +23,17 @@ class UI {
         const playBtnContainer = new ContainerBase(this.stage, this.descriptor['playBtn'])
         this.playBtn = new ScalingButton(playBtnContainer, this.descriptor['playBtn']['btn'])
 
-
-
         this.soundButtonContainer = new ContainerBase(this.stage, this.descriptor['soundBtn'])
-
         this.sounButton = new SoundButton(this.soundButtonContainer, this.descriptor['soundBtn'])
+        this.sounButton.visible = false
+
 
         this.init = null
+    }
+
+    onTutorialClick(){
+        this.sounButton.visible = true
+        this.winTextContainer.visible = true
     }
 
     setPlayBtnEnabled(bool){
@@ -39,6 +44,7 @@ class UI {
     setPlayBtnAction(fn){
         this.playBtn.setAction(() => {
             fn();
+            playSound('click')
             send(ON_PLAY_BTN)
         })
     }
@@ -52,12 +58,15 @@ class UI {
         const balanceTextContainer = new ContainerBase(this.stage, this.descriptor['balance'])
         this.balanceStaticText = new TextBase(balanceTextContainer, this.descriptor['balance']['staticText'])
         this.balanceDynamicText = new TextBase(balanceTextContainer, this.descriptor['balance']['dynamicText'])
+
+        window.setBalance = this.setBalance.bind(this) // for cheating
     }
 
     createWin(){
-        const winTextContainer = new ContainerBase(this.stage, this.descriptor['win'])
-        this.winStaticText = new SpriteBase(winTextContainer, this.descriptor['win']['staticText'])
-        this.winDynamicText = new TextBase(winTextContainer, this.descriptor['win']['dynamicText'])
+        this.winTextContainer = new ContainerBase(this.stage, this.descriptor['win'])
+        this.winStaticText = new SpriteBase(this.winTextContainer, this.descriptor['win']['staticText'])
+        this.winDynamicText = new TextBase(this.winTextContainer, this.descriptor['win']['dynamicText'])
+        this.winTextContainer.visible = false
     }
     createBet(){
         this.betTextContainer = new ContainerBase(this.stage, this.descriptor['bet'])
@@ -100,8 +109,10 @@ class UI {
     }
 
     updateBet(){
+        playSound('click')
         this.betDynamicText.setText(this.betValues[this.betValueIndex])
     }
+
     getBet(){
        return +this.betDynamicText.getText()
     }

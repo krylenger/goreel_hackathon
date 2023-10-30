@@ -33,6 +33,8 @@ export class HeadAndTail extends Container{
         this.chooseHeader = new TextBase(this.headAndTailContainer, this.descriptor['mainContainer'].chooseHeader);
         this.chooseHeader.setVisible(false);
 
+        gsap.to(this.chooseHeader, {pixi: {scale: 1.1}, duration:0.5, repeat: -1, yoyo: true})
+
         this.coinSpineCont = new ContainerBase(this.headAndTailContainer, this.descriptor['mainContainer'].coinSpine)
         this.coinSpine = new SpineBase(this.coinSpineCont, this.descriptor['mainContainer'].coinSpine);
         this.coinSpine.setVisible(false);

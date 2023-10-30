@@ -35,6 +35,20 @@ export const settings = {
                     x: 190,
                     y: 410,
                 },
+            },
+            chooseText: {
+                text: 'Please, choose a card, for play game!',
+                style:{
+                    "fontFamily":'Franklin',
+                    "fontSize": "28px",
+                    "fontWeight": 'normal',
+                    "fill": ['#ffffff'],
+                    align: 'center'
+                },
+                anchorX: 0.5,
+                anchorY: 0.5,
+                x: 170,
+                y: -120
             }
         },
         wheelOfFortune:{
@@ -151,16 +165,17 @@ export const settings = {
                     y: 0,
                 },
                 chooseHeader: {
-                    text: 'Please choose: \nDiamond or Crown.',
+                    text: 'Please choose Diamond or Crown.',
                     style:{
                         "fontFamily":'Franklin',
-                        "fontSize": "42px",
-                        "fontWeight": 'bold',
-                        "align": 'center',
-                        "fill": ['#e4ac19','#f3e047', '#e4ac19'],
+                        "fontSize": "28px",
+                        "fontWeight": 'normal',
+                        "fill": ['#ffffff'],
+                        align: 'center'
                     },
+                    anchorX: 0.5,
                     anchorY: 0.5,
-                    x: 120,
+                    x: 304,
                     y: 480
                 },
                 coinSpine: {

@@ -1,8 +1,8 @@
 import {SpineBase} from "../../components/base/spine-base";
-import {subscribe, unSubscribe} from "../../sender/event-sender";
-import {CHANGE_ORIENTATION} from "../../constants/events";
 import {isLand} from "../../helpers/helper";
 import {initSounds, playSound} from "../../sound-engine/sound-engine";
+import {subscribe, unSubscribe} from "../../sender/event-sender";
+import {CHANGE_ORIENTATION} from "../../constants/events";
 import gsap from "gsap/all";
 import UI from "../MainGameComponents/UI";
 
@@ -11,7 +11,6 @@ export class Tutorial extends SpineBase{
         super(stage, descriptor);
 
         this.eventMode = 'static'
-        // this.cursor = 'pointer';
 
         this._onChangeOrientation = this.onChangeOrientation.bind(this)
         subscribe(CHANGE_ORIENTATION, this._onChangeOrientation)

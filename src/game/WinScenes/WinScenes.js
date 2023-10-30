@@ -27,6 +27,8 @@ export class WinScenes extends ContainerBase{
             this.bigWin.stopAnimation(0)
             this.regularWin.stopAnimation(0)
             stopSound('big_win')
+            stopSound('collect')
+            stopSound('bonus_win')
         })
     }
 

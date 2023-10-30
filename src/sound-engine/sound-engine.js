@@ -6,7 +6,7 @@ import soundJson from  '../../res/sound/soundsprite.json'
 
 let sound = null;
 let isInited = false
-let isAllowed = false
+let isAllowed = true
 const soundIds = {};
 
 window.addEventListener('blur', ()=> (isInited && isAllowed) && Howler.mute(true))

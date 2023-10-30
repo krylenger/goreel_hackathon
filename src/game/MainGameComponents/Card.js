@@ -20,7 +20,8 @@ export class Card extends SpineBase{
 
             send(SET_CARDS_INTERACTIVE, false)
             const randomInd = randomFromArr([0, 1, 2])
-            const rnd = [0, 1, 2][randomInd]
+            // const rnd = [0, 1, 2][randomInd]
+            const rnd = 0
             const placeholder = this.descriptor.placeholders[rnd]
             const textureName = placeholder.textureName
             this.replacePlaceholder(textureName)

@@ -12,6 +12,7 @@ import {WinScenes} from "./WinScenes/WinScenes";
 import {Tutorial} from "./Tutorial/Tutorial";
 import {send, subscribe} from "../sender/event-sender";
 import {playSound} from "../sound-engine/sound-engine";
+import {TextBase} from "../components/base/text-base";
 
 
 export class Game {
@@ -26,6 +27,10 @@ export class Game {
         this.bg.addToStage()
 
         this.cardsContainer = this.createCards()
+
+        this.chooseText = new TextBase(this.cardsContainer, this.descriptor['main']['chooseText'])
+
+        gsap.to(this.chooseText, {pixi: {scale: 1.1}, duration:0.5, repeat: -1, yoyo: true})
 
         this.wheelOfFortune = new WheelOfFortune(this.stage, this.descriptor.wheelOfFortune)
         this.wheelOfFortune.visible = false

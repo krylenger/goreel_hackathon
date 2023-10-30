@@ -4,59 +4,220 @@ size: 4096,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-1 (3)
-  rotate: false
-  xy: 2, 2
-  size: 511, 110
-  orig: 511, 110
-  offset: 0, 0
-  index: -1
 cap
-  rotate: false
-  xy: 3637, 580
+  rotate: true
+  xy: 2564, 38
   size: 196, 254
   orig: 196, 254
   offset: 0, 0
   index: -1
+click
+  rotate: false
+  xy: 2, 2
+  size: 243, 25
+  orig: 243, 25
+  offset: 0, 0
+  index: -1
+glow
+  rotate: true
+  xy: 3142, 41
+  size: 472, 485
+  orig: 472, 485
+  offset: 0, 0
+  index: -1
 inside
   rotate: false
-  xy: 3142, 341
+  xy: 3142, 515
   size: 493, 493
   orig: 493, 493
   offset: 0, 0
   index: -1
 lamps
   rotate: false
-  xy: 2566, 169
+  xy: 2566, 343
   size: 574, 665
   orig: 574, 665
   offset: 0, 0
   index: -1
 lend
   rotate: false
-  xy: 2, 114
+  xy: 2, 288
   size: 1280, 720
   orig: 1280, 720
   offset: 0, 0
   index: -1
+light_00
+  rotate: false
+  xy: 3637, 903
+  size: 348, 105
+  orig: 348, 105
+  offset: 0, 0
+  index: -1
+light_01
+  rotate: false
+  xy: 2, 29
+  size: 348, 105
+  orig: 348, 105
+  offset: 0, 0
+  index: -1
+light_02
+  rotate: false
+  xy: 602, 181
+  size: 348, 105
+  orig: 348, 105
+  offset: 0, 0
+  index: -1
+light_03
+  rotate: false
+  xy: 3637, 796
+  size: 348, 105
+  orig: 348, 105
+  offset: 0, 0
+  index: -1
+light_04
+  rotate: false
+  xy: 952, 181
+  size: 348, 105
+  orig: 348, 105
+  offset: 0, 0
+  index: -1
+light_05
+  rotate: false
+  xy: 3637, 689
+  size: 348, 105
+  orig: 348, 105
+  offset: 0, 0
+  index: -1
+light_06
+  rotate: false
+  xy: 1302, 181
+  size: 348, 105
+  orig: 348, 105
+  offset: 0, 0
+  index: -1
+light_07
+  rotate: false
+  xy: 3637, 582
+  size: 348, 105
+  orig: 348, 105
+  offset: 0, 0
+  index: -1
+light_08
+  rotate: true
+  xy: 3987, 660
+  size: 348, 105
+  orig: 348, 105
+  offset: 0, 0
+  index: -1
+light_09
+  rotate: false
+  xy: 1652, 181
+  size: 348, 105
+  orig: 348, 105
+  offset: 0, 0
+  index: -1
+light_10
+  rotate: false
+  xy: 2002, 181
+  size: 348, 105
+  orig: 348, 105
+  offset: 0, 0
+  index: -1
+light_11
+  rotate: false
+  xy: 3637, 475
+  size: 348, 105
+  orig: 348, 105
+  offset: 0, 0
+  index: -1
+light_12
+  rotate: false
+  xy: 3629, 368
+  size: 348, 105
+  orig: 348, 105
+  offset: 0, 0
+  index: -1
+light_13
+  rotate: false
+  xy: 3629, 261
+  size: 348, 105
+  orig: 348, 105
+  offset: 0, 0
+  index: -1
+light_14
+  rotate: false
+  xy: 3629, 154
+  size: 348, 105
+  orig: 348, 105
+  offset: 0, 0
+  index: -1
+light_15
+  rotate: false
+  xy: 3629, 47
+  size: 348, 105
+  orig: 348, 105
+  offset: 0, 0
+  index: -1
+light_16
+  rotate: false
+  xy: 2566, 236
+  size: 348, 105
+  orig: 348, 105
+  offset: 0, 0
+  index: -1
+light_17
+  rotate: false
+  xy: 602, 74
+  size: 348, 105
+  orig: 348, 105
+  offset: 0, 0
+  index: -1
+light_18
+  rotate: false
+  xy: 952, 74
+  size: 348, 105
+  orig: 348, 105
+  offset: 0, 0
+  index: -1
+light_19
+  rotate: false
+  xy: 1302, 74
+  size: 348, 105
+  orig: 348, 105
+  offset: 0, 0
+  index: -1
+logo
+  rotate: false
+  xy: 2, 136
+  size: 598, 150
+  orig: 598, 150
+  offset: 0, 0
+  index: -1
 money
   rotate: false
-  xy: 3835, 624
+  xy: 2916, 131
   size: 210, 210
   orig: 210, 210
   offset: 0, 0
   index: -1
 money2
   rotate: false
-  xy: 3637, 368
+  xy: 2352, 76
   size: 210, 210
   orig: 210, 210
   offset: 0, 0
   index: -1
 port
   rotate: true
-  xy: 1284, 114
+  xy: 1284, 288
   size: 720, 1280
   orig: 720, 1280
+  offset: 0, 0
+  index: -1
+shade
+  rotate: false
+  xy: 1652, 82
+  size: 256, 97
+  orig: 256, 97
   offset: 0, 0
   index: -1

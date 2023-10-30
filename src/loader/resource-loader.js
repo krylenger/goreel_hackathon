@@ -1,6 +1,8 @@
 import {Assets} from "pixi.js";
 import * as sender from "../sender/event-sender";
 import * as events from "../constants/events";
+import soundJson from  '../../res/sound/soundsprite.json'
+import {loadJson} from "../sound-engine/sound-engine";
 
 export let spineResources;
 
@@ -15,6 +17,8 @@ export const loadAssetsToCache = async descriptor => {
     Assets.addBundle('textures', textures);
     Assets.addBundle('spines', spines);
     Assets.addBundle('fonts', fonts);
+
+    loadJson(soundJson)
 
     const [spineRes] = await Promise.all([
         Assets.loadBundle('spines', onProgress),

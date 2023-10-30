@@ -2,8 +2,8 @@ import { Howl } from 'howler'
 import {isExist} from "../helpers/helper";
 import {subscribe} from "../sender/event-sender";
 import {ON_SET_SOUNDS_ON_OFF} from "../constants/events";
-import soundJson from  '../../res/sound/soundsprite.json'
 
+let soundJson
 let sound = null;
 let isInited = false
 let isAllowed = true
@@ -17,6 +17,9 @@ const onSetSoundsOnOff = allow => {
     isAllowed = allow;
     Howler.mute(!allow)
 }
+
+const loadJson = json => json =  soundJson;
+
 
 const initSounds = () => {
     sound = new Howl(soundJson)
@@ -35,4 +38,4 @@ const stopSound = soundName => {
     }
 }
 
-export {playSound, stopSound, initSounds};
+export {playSound, stopSound, initSounds, loadJson};

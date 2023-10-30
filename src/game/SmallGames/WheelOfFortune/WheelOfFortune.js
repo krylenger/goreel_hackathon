@@ -67,7 +67,6 @@ export class WheelOfFortune extends Container{
         playSound('mix')
 
         UI.setVisiblePlayBtn(false)
-        this.exitButton.setVisible(false);
         const balance = UI.getBalance()
         const bet = UI.getBet()
         UI.setWin(0)
@@ -80,6 +79,7 @@ export class WheelOfFortune extends Container{
 
         gsap.to(this.drum, {
             pixi: {angle: this.drum.angle + 30}, duration: 0.5 * xTime, ease: 'Back.easeIn(3)',
+            onStart:()=> this.light.setAnimation(0, 'light_spin', true),
             onComplete: ()=>{
                 gsap.to(this.drum, {
                     pixi: {angle: this.drum.angle + 360}, duration: 1*xTime, repeat, ease: 'Power0.easeInOut',
@@ -87,24 +87,29 @@ export class WheelOfFortune extends Container{
                         gsap.to(this.drum, {
                             pixi: {angle: this.drum.angle + pos * 30}, duration: 1*xTime* pos/12, ease: 'Power0.easeInOut',
                             onComplete: () =>{
-                                gsap.to(this.drum, {pixi: {angle: this.drum.angle + 60}, duration: 0.7 * xTime, ease: 'Back.easeOut', onComplete:() =>{
-                                        this.drum.angle = this.drum.angle % 360
-
-                                        const index = Math.round(this.drum.angle/30)
-
-                                        const hasJackpot = this.wins[index] === 10
-
-                                        const xWin = this.wins[index] * bet
-                                        this.setWin(xWin, hasJackpot)
-                                        this.exitButton.setVisible(true);
-
-                                        stopSound('mix')
-                                        playSound('stop_fx')
-                                    }})
+                                gsap.to(this.drum, {pixi: {angle: this.drum.angle + 60},
+                                    duration: 0.7 * xTime, ease: 'Back.easeOut',
+                                    onComplete:() => this.rotationComplete(bet)})
                             }})
                     }})
             }})
 
+    }
+
+    rotationComplete(bet){
+        this.light.setAnimation(0, 'light', true)
+        this.drum.angle = this.drum.angle % 360
+
+        const index = Math.round(this.drum.angle/30)
+
+        const hasJackpot = this.wins[index] === 10
+
+        const xWin = this.wins[index] * bet
+        this.setWin(xWin, hasJackpot)
+        this.exitButton.setVisible(true);
+
+        stopSound('mix')
+        playSound('stop_fx')
     }
 
     setWin(xWin, hasJackpot){

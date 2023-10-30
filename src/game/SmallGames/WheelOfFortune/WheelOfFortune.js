@@ -65,6 +65,7 @@ export class WheelOfFortune extends Container{
 
     rotate(){
         UI.setVisiblePlayBtn(false)
+        this.exitButton.setVisible(false);
         const balance = UI.getBalance()
         const bet = UI.getBet()
         UI.setWin(0)
